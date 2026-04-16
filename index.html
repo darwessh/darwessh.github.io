@@ -381,45 +381,154 @@
   <span>© 2026 Abdirahman Mohamed</span>
   <span>darwesh.tech · Nairobi, Kenya</span>
 </footer>
-
 <script>
-  const input = document.getElementById('terminal-input');
-  const output = document.getElementById('terminal-out');
-  const inputArea = input.parentElement;
+const input = document.getElementById('terminal-input');
+const output = document.getElementById('terminal-out');
+const inputArea = input.parentElement;
 
-  const commands = {
-    'help': 'Commands: whoami, ls, stack, clear, contact',
-    'whoami': 'Abdirahman Mohamed: ERP & Cloud Architect at Azzir Group.',
-    'ls': 'experience/ certifications/ stack/ contact.txt',
-    'stack': 'ERPNext, AWS (EC2/RDS/S3), Python, Ubuntu Linux.',
-    'contact': 'Email: abdirahmandarwesh1@gmail.com | LinkedIn: abdirahman404',
-    'clear': 'CLEAR'
-  };
+let history = [];
+let historyIndex = -1;
+let currentPath = "~";
 
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      const val = input.value.toLowerCase().trim();
-      if (val === 'clear') {
-        const lines = output.querySelectorAll('.terminal-line');
-        lines.forEach(l => l.remove());
-        input.value = '';
-        return;
+/* FILESYSTEM */
+const fs = {
+  "~": {
+    type: "dir",
+    children: {
+      about: { type:"file", content:"ERPNext consultant focused on real business workflows + cloud." },
+      skills: { type:"file", content:"ERPNext | AWS | Linux | Networking | POS | Security" },
+      experience: { type:"file", content:"Azzir Group\nSuza Logistics\nShell" },
+      contact: { type:"file", content:"email: abdirahmandarwesh1@gmail.com\nlinkedin: /in/abdirahman404" },
+      projects: {
+        type:"dir",
+        children:{
+          erp:{ type:"file", content:"ERPNext systems, finance modules, automation" },
+          cloud:{ type:"file", content:"AWS infra, VPC, serverless" }
+        }
       }
-      const userLine = document.createElement('div');
-      userLine.className = 'terminal-line';
-      userLine.innerHTML = `<span class="terminal-prompt">darwesh@cloud:~$</span> ${input.value}`;
-      output.insertBefore(userLine, inputArea);
-
-      const response = commands[val] || `command not found: ${val}`;
-      const resLine = document.createElement('div');
-      resLine.className = 'terminal-line';
-      resLine.style.color = 'var(--muted)';
-      resLine.textContent = response;
-      output.insertBefore(resLine, inputArea);
-
-      input.value = '';
-      output.scrollTop = output.scrollHeight;
     }
-  });
-  document.querySelector('.terminal-body').addEventListener('click', () => input.focus());
+  }
+};
+
+/* PRINT */
+function print(text, speed=0){
+  const line = document.createElement("div");
+  line.className = "terminal-line";
+
+  output.insertBefore(line, inputArea);
+
+  if(speed===0){
+    line.textContent = text;
+  } else {
+    let i=0;
+    const interval=setInterval(()=>{
+      line.textContent += text[i];
+      i++;
+      if(i>=text.length) clearInterval(interval);
+    }, speed);
+  }
+
+  output.scrollTop = output.scrollHeight;
+}
+
+/* PROMPT UPDATE */
+function updatePrompt(){
+  document.querySelector(".terminal-prompt").textContent =
+    `darwesh@ubuntu:${currentPath}$`;
+}
+
+/* COMMANDS */
+function runCommand(cmd){
+  const [base,...args]=cmd.split(" ");
+
+  switch(base){
+    case "help":
+      return `commands:
+ls  cd  cat  clear
+whoami  pwd  open  echo`;
+
+    case "ls":
+      return Object.keys(fs["~"].children).join("  ");
+
+    case "cd":
+      if(args[0]===".."){
+        currentPath="~";
+        updatePrompt();
+        return "";
+      }
+
+      if(fs["~"].children[args[0]]?.type==="dir"){
+        currentPath=args[0];
+        updatePrompt();
+        return "";
+      }
+
+      return "no such directory";
+
+    case "cat":
+      const file = fs["~"].children[args[0]];
+      return file?.content || "file not found";
+
+    case "pwd":
+      return currentPath;
+
+    case "whoami":
+      return "abdirahman@darwesh.tech";
+
+    case "clear":
+      const lines = output.querySelectorAll('.terminal-line');
+      lines.forEach(l => l.remove());
+      return "";
+
+    case "echo":
+      return args.join(" ");
+
+    case "open":
+      if(args[0]){
+        location.hash=args[0];
+        return `opening ${args[0]}...`;
+      }
+      return "specify section";
+
+    default:
+      return `command not found: ${base}`;
+  }
+}
+
+/* INPUT HANDLING */
+input.addEventListener("keydown",(e)=>{
+  if(e.key==="Enter"){
+    const cmd=input.value.trim();
+
+    print(`darwesh@ubuntu:${currentPath}$ ${cmd}`);
+    const res=runCommand(cmd);
+
+    if(res) print(res,5);
+
+    history.push(cmd);
+    historyIndex=history.length;
+
+    input.value="";
+  }
+
+  if(e.key==="ArrowUp"){
+    historyIndex=Math.max(0,historyIndex-1);
+    input.value=history[historyIndex]||"";
+  }
+
+  if(e.key==="ArrowDown"){
+    historyIndex=Math.min(history.length,historyIndex+1);
+    input.value=history[historyIndex]||"";
+  }
+});
+
+/* BOOT */
+function boot(){
+  print("Booting Darwesh OS v3.2...",10);
+  setTimeout(()=>print("Initializing modules...",10),300);
+  setTimeout(()=>print("Loading ERP stack...",10),600);
+  setTimeout(()=>print("System ready.\nType 'help'\n",10),900);
+}
+
+boot();
 </script>
