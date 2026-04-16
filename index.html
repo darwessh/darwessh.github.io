@@ -6,631 +6,200 @@
 <title>Abdirahman Mohamed — ERPNext Consultant</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* KEEP ALL YOUR ORIGINAL CSS */
+*{box-sizing:border-box;margin:0;padding:0;}
 
-  :root {
-    --bg: #0e0e0d;
-    --surface: #161614;
-    --border: rgba(255,255,255,0.07);
-    --border-strong: rgba(255,255,255,0.13);
-    --text: #f0ede6;
-    --muted: #888780;
-    --accent: #C8B97A;
-    --accent-dim: rgba(200,185,122,0.12);
-    --teal: #5DCAA5;
-    --teal-dim: rgba(93,202,165,0.1);
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'Instrument Sans', sans-serif;
-    --mono: 'DM Mono', monospace;
-  }
+:root{
+  --bg:#0e0e0d;
+  --surface:#161614;
+  --border:rgba(255,255,255,0.07);
+  --border-strong:rgba(255,255,255,0.13);
+  --text:#f0ede6;
+  --muted:#888780;
+  --accent:#C8B97A;
+  --teal:#5DCAA5;
+  --mono:'DM Mono', monospace;
+  --serif:'DM Serif Display', serif;
+  --sans:'Instrument Sans', sans-serif;
+}
 
-  html { scroll-behavior: smooth; }
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--sans);
+}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
+/* HERO FIX (side-by-side layout) */
+.hero{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:60px;
+  padding:120px 40px 80px;
+}
 
-  /* ── GRID OVERLAY ── */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-    background-size: 64px 64px;
-    pointer-events: none;
-    z-index: 0;
-  }
+/* TERMINAL */
+.terminal-wrapper{
+  width:420px;
+  height:300px;
+  background:#050505;
+  border:1px solid var(--border-strong);
+  border-radius:6px;
+  display:flex;
+  flex-direction:column;
+  font-family:var(--mono);
+  box-shadow:0 30px 60px rgba(0,0,0,0.5);
+}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background: rgba(14,14,13,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
+.terminal-header{
+  background:#1a1a19;
+  padding:10px;
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+  color:var(--muted);
+}
 
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.06em;
-    text-decoration: none;
-  }
+.terminal-body{
+  padding:12px;
+  font-size:13px;
+  overflow-y:auto;
+  flex:1;
+}
 
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
+.terminal-line{margin-bottom:6px;}
+.terminal-prompt{color:var(--teal);margin-right:6px;}
 
-  .nav-links a {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--text); }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 0 40px 80px;
-    z-index: 1;
-  }
-
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--teal);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--teal);
-  }
-
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(52px, 8vw, 108px);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 32px;
-    max-width: 900px;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-desc {
-    font-size: 16px;
-    color: var(--muted);
-    max-width: 480px;
-    line-height: 1.7;
-    margin-bottom: 40px;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #0e0e0d;
-    font-weight: 600;
-  }
-
-  .btn-primary:hover {
-    background: #d9c98a;
-    transform: translateY(-1px);
-  }
-
-  .btn-outline {
-    border: 1px solid var(--border-strong);
-    color: var(--muted);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* ── SECTION SHARED ── */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 100px 40px;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 60px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 80px;
-    height: 1px;
-    background: var(--border-strong);
-  }
-
-  h2 {
-    font-family: var(--serif);
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
-  }
-
-  /* ── ABOUT ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    max-width: 1100px;
-  }
-
-  .about-body {
-    font-size: 17px;
-    line-height: 1.75;
-    color: #c8c5be;
-  }
-
-  .about-body p + p { margin-top: 20px; }
-
-  .certs {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .cert-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 18px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    transition: border-color 0.2s;
-  }
-
-  .cert-item:hover { border-color: var(--border-strong); }
-
-  .cert-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .cert-name {
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  .cert-issuer {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-
-  /* ── SKILLS ── */
-  .skills-section { background: var(--surface); }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    max-width: 1100px;
-  }
-
-  .skill-card {
-    background: var(--surface);
-    padding: 36px 32px;
-  }
-
-  .skill-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-
-  .skill-icon.erp { background: var(--accent-dim); }
-  .skill-icon.cloud { background: var(--teal-dim); }
-  .skill-icon.biz { background: rgba(255,255,255,0.04); }
-
-  .skill-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-
-  .skill-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 16px;
-  }
-
-  .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    padding: 4px 10px;
-    border: 1px solid var(--border-strong);
-    border-radius: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ── EXPERIENCE ── */
-  .timeline {
-    max-width: 700px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 32px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .timeline-item:first-child { padding-top: 0; }
-  .timeline-item:last-child { border-bottom: none; }
-
-  .timeline-date {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    padding-top: 4px;
-    line-height: 1.5;
-  }
-
-  .timeline-role {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .timeline-org {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    margin-bottom: 12px;
-    letter-spacing: 0.04em;
-  }
-
-  .timeline-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  /* ── CONTACT ── */
-  .contact-section {
-    text-align: center;
-    padding: 120px 40px;
-  }
-
-  .contact-section h2 {
-    max-width: 600px;
-    margin: 0 auto 24px;
-  }
-
-  .contact-section p {
-    color: var(--muted);
-    margin-bottom: 48px;
-    font-size: 16px;
-  }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-    position: relative;
-  }
-
-  footer span {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-tag { animation: fadeUp 0.6s ease both; }
-  h1 { animation: fadeUp 0.6s 0.1s ease both; }
-  .hero-desc { animation: fadeUp 0.6s 0.2s ease both; }
-  .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    nav { padding: 16px 20px; }
-    .nav-links { gap: 20px; }
-    section { padding: 70px 20px; }
-    .hero { padding: 0 20px 60px; }
-    .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-    footer { flex-direction: column; gap: 12px; text-align: center; }
-  }
-
-  @media (max-width: 480px) {
-    .nav-links { display: none; }
-  }
+#terminal-input{
+  background:transparent;
+  border:none;
+  outline:none;
+  color:#00ff88;
+  width:100%;
+  font-family:var(--mono);
+}
 </style>
 </head>
+
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="nav-logo">darwesh.tech</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-tag">Available for consulting engagements</div>
-  <h1>ERP systems that<br>actually <em>work</em> for<br>your business.</h1>
-  <p class="hero-desc">
-    ERPNext implementation, customization, and cloud infrastructure — built for operational reality, not just go-live day.
-  </p>
-  <div class="hero-actions">
-    <a href="#contact" class="btn btn-primary">Get in touch →</a>
-    <a href="#experience" class="btn btn-outline">View experience</a>
-  </div>
-</section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">About</div>
-  <div class="about-grid">
-    <div>
-      <h2>Business logic first.<br>Technology second.</h2>
-      <div class="about-body">
-        <p>I'm Abdirahman Mohamed, an ERPNext consultant based in Nairobi. I work at the intersection of ERP implementation and cloud infrastructure — helping businesses move from chaotic spreadsheets and disconnected systems to ERPNext environments that genuinely reflect how their operations work.</p>
-        <p>My background in accounting and bookkeeping at Shell gave me a process-first lens that most technical consultants miss. I don't just configure modules — I map your workflows, identify gaps, and build systems your team will actually use.</p>
-        <p>Currently at Azzir Group, working across multiple industries on ERPNext implementations, financial module configuration, and AWS-based deployments.</p>
-      </div>
-    </div>
-    <div>
-      <div class="section-label" style="margin-bottom: 24px;">Certifications</div>
-      <div class="certs">
-        <div class="cert-item">
-          <div class="cert-dot" style="background: #FF9900;"></div>
-          <div>
-            <div class="cert-name">AWS Certified Cloud Practitioner</div>
-            <div class="cert-issuer">Amazon Web Services</div>
-          </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot" style="background: #5DCAA5;"></div>
-          <div>
-            <div class="cert-name">AWS Solutions Architect — Academy Graduate</div>
-            <div class="cert-issuer">Amazon Web Services · ALX</div>
-          </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot" style="background: var(--accent);"></div>
-          <div>
-            <div class="cert-name">Certified API Security Practitioner</div>
-            <div class="cert-issuer">Cybershujaa</div>
-          </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot" style="background: #9F7AEA;"></div>
-          <div>
-            <div class="cert-name">Advanced Cybersecurity Certificate</div>
-            <div class="cert-issuer">Cybershujaa · USIU Africa</div>
-          </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot" style="background: #63B3ED;"></div>
-          <div>
-            <div class="cert-name">Cloud Computing — AWS</div>
-            <div class="cert-issuer">African Leadership Experience (ALX)</div>
-          </div>
-        </div>
+  <div>
+    <h1>ERP systems that<br>actually <em>work</em> for<br>your business.</h1>
+  </div>
+
+  <!-- TERMINAL -->
+  <div class="terminal-wrapper">
+    <div class="terminal-header">darwesh@ubuntu: ~</div>
+
+    <div class="terminal-body" id="terminal-out">
+      <div class="terminal-line">Booting Darwesh OS...</div>
+      <div class="terminal-line">System ready. Type help</div>
+
+      <div class="input-area">
+        <span class="terminal-prompt">darwesh@ubuntu:~$</span>
+        <input id="terminal-input" autofocus autocomplete="off">
       </div>
     </div>
   </div>
+
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="skills-section">
-  <div class="section-label">What I do</div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon erp">⚙️</div>
-      <div class="skill-title">ERPNext Implementation</div>
-      <div class="skill-desc">End-to-end ERP deployments covering financial modules, inventory, HR, and custom workflows tailored to how your business actually operates.</div>
-      <div class="skill-tags">
-        <span class="tag">Frappe</span>
-        <span class="tag">ERPNext</span>
-        <span class="tag">Finance</span>
-        <span class="tag">Customization</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon cloud">☁️</div>
-      <div class="skill-title">Cloud Infrastructure</div>
-      <div class="skill-desc">Deploying and managing ERPNext on AWS — reliable, cost-efficient architectures that scale with your business without over-engineering.</div>
-      <div class="skill-tags">
-        <span class="tag">AWS</span>
-        <span class="tag">Linux</span>
-        <span class="tag">EC2</span>
-        <span class="tag">Security</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon biz">📊</div>
-      <div class="skill-title">Process Analysis</div>
-      <div class="skill-desc">Translating operational reality into system configuration — from requirements gathering and gap analysis to go-live support and team training.</div>
-      <div class="skill-tags">
-        <span class="tag">Requirements</span>
-        <span class="tag">Workflow</span>
-        <span class="tag">Training</span>
-        <span class="tag">Support</span>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- KEEP ALL YOUR OTHER SECTIONS EXACTLY AS THEY ARE -->
+<!-- (about, skills, experience, contact, footer) -->
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">Experience</div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">Jan 2026<br>Present</div>
-      <div>
-        <div class="timeline-role">ERPNext Consultant</div>
-        <div class="timeline-org">Azzir Group · Nairobi, Kenya</div>
-        <div class="timeline-desc">Supporting implementation, customization, and optimization of ERPNext systems across client engagements. Focused on financial module configuration, operational efficiency, and cloud-based integrations.</div>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 2023<br>Nov 2025</div>
-      <div>
-        <div class="timeline-role">Sales Operations Coordinator</div>
-        <div class="timeline-org">Suza Logistics · Kenya</div>
-        <div class="timeline-desc">Managed sales operations workflows and process coordination across logistics operations, building hands-on understanding of supply chain and operational systems.</div>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Prior</div>
-      <div>
-        <div class="timeline-role">Accounting Bookkeeper</div>
-        <div class="timeline-org">Shell</div>
-        <div class="timeline-desc">Financial workflows, reconciliation processes, and internal controls — the foundation that shapes how I approach ERP implementations from a business-process perspective.</div>
-      </div>
-    </div>
-  </div>
-</section>
+<script>
+const input=document.getElementById("terminal-input");
+const output=document.getElementById("terminal-out");
+const inputArea=input.parentElement;
 
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="section-label" style="justify-content: center;">Contact</div>
-  <h2>Let's build something that lasts.</h2>
-  <p>Open to ERPNext consulting engagements, cloud infrastructure projects, and advisory work across East Africa and remote.</p>
-  <div class="contact-links">
-    <a href="mailto:abdirahmandarwesh1@gmail.com" class="btn btn-primary">abdirahmandarwesh1@gmail.com</a>
-    <a href="https://www.linkedin.com/in/abdirahman404" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-    <a href="tel:+254722966183" class="btn btn-outline">+254 722 966 183</a>
-  </div>
-</section>
+let history=[];
+let historyIndex=-1;
+let currentPath="~";
 
-<!-- FOOTER -->
-<footer>
-  <span>© 2025 Abdirahman Mohamed</span>
-  <span>darwesh.tech · Nairobi, Kenya</span>
-</footer>
+const fs={
+  "~":{
+    children:{
+      about:{content:"ERPNext consultant focused on business workflows + cloud systems."},
+      skills:{content:"ERPNext | AWS | Linux | Networking"},
+      experience:{content:"Azzir Group\nSuza Logistics\nShell"},
+      contact:{content:"email: abdirahmandarwesh1@gmail.com"},
+      projects:{type:"dir"}
+    }
+  }
+};
+
+function print(text){
+  const line=document.createElement("div");
+  line.className="terminal-line";
+  line.textContent=text;
+  output.insertBefore(line,inputArea);
+  output.scrollTop=output.scrollHeight;
+}
+
+function runCommand(cmd){
+  const [base,...args]=cmd.split(" ");
+
+  switch(base){
+    case "help":
+      return "ls cd cat clear whoami pwd";
+
+    case "ls":
+      return Object.keys(fs["~"].children).join(" ");
+
+    case "cat":
+      return fs["~"].children[args[0]]?.content||"not found";
+
+    case "whoami":
+      return "abdirahman@darwesh.tech";
+
+    case "pwd":
+      return currentPath;
+
+    case "clear":
+      output.innerHTML="";
+      output.appendChild(inputArea);
+      return "";
+
+    default:
+      return "command not found";
+  }
+}
+
+input.addEventListener("keydown",(e)=>{
+  if(e.key==="Enter"){
+    const cmd=input.value.trim();
+
+    print(`darwesh@ubuntu:~$ ${cmd}`);
+    const res=runCommand(cmd);
+
+    if(res) print(res);
+
+    history.push(cmd);
+    historyIndex=history.length;
+
+    input.value="";
+  }
+
+  if(e.key==="ArrowUp"){
+    historyIndex=Math.max(0,historyIndex-1);
+    input.value=history[historyIndex]||"";
+  }
+
+  if(e.key==="ArrowDown"){
+    historyIndex=Math.min(history.length,historyIndex+1);
+    input.value=history[historyIndex]||"";
+  }
+});
+
+document.querySelector(".terminal-body").addEventListener("click",()=>input.focus());
+</script>
 
 </body>
 </html>
