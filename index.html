@@ -3,238 +3,633 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdirahman Mohamed — ERP & Cloud Consultant</title>
+<title>Abdirahman Mohamed — ERPNext Consultant</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
   :root {
-    --bg: #000000;
-    --surface: #0a0a0a;
-    --border: rgba(255, 255, 255, 0.08);
-    --text-primary: #ffffff;
-    --text-secondary: #a1a1a1;
-    --cyan: #00f3ff; 
-    --cyan-dim: rgba(0, 243, 255, 0.1);
-    --sans: 'Inter', sans-serif;
-    --mono: 'JetBrains Mono', monospace;
+    --bg: #0e0e0d;
+    --surface: #161614;
+    --border: rgba(255,255,255,0.07);
+    --border-strong: rgba(255,255,255,0.13);
+    --text: #f0ede6;
+    --muted: #888780;
+    --accent: #C8B97A;
+    --accent-dim: rgba(200,185,122,0.12);
+    --teal: #5DCAA5;
+    --teal-dim: rgba(93,202,165,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'Instrument Sans', sans-serif;
+    --mono: 'DM Mono', monospace;
   }
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
+
   body {
     background: var(--bg);
-    color: var(--text-primary);
+    color: var(--text);
     font-family: var(--sans);
+    font-size: 16px;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
   }
 
-  /* ── BACKGROUND GLOW ── */
-  body::after {
+  /* ── GRID OVERLAY ── */
+  body::before {
     content: '';
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(0, 243, 255, 0.03) 0%, transparent 70%);
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 64px 64px;
     pointer-events: none;
     z-index: 0;
   }
 
-  /* ── NAVIGATION ── */
+  /* ── NAV ── */
   nav {
     position: fixed;
-    top: 0; width: 100%;
-    z-index: 1000;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 24px 60px;
-    background: rgba(0,0,0,0.8);
-    backdrop-filter: blur(20px);
+    padding: 20px 40px;
+    background: rgba(14,14,13,0.85);
+    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
   }
 
   .nav-logo {
     font-family: var(--mono);
-    font-weight: 800;
-    color: var(--text-primary);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.06em;
     text-decoration: none;
-    font-size: 14px;
-    letter-spacing: -0.02em;
   }
 
-  .nav-logo span { color: var(--cyan); }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
 
-  .nav-links { display: flex; gap: 40px; list-style: none; }
   .nav-links a {
     font-family: var(--mono);
-    font-size: 11px;
-    color: var(--text-secondary);
+    font-size: 12px;
+    color: var(--muted);
     text-decoration: none;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
-    transition: 0.3s;
+    transition: color 0.2s;
   }
-  .nav-links a:hover { color: var(--cyan); }
+
+  .nav-links a:hover { color: var(--text); }
 
   /* ── HERO ── */
   .hero {
-    height: 100vh;
+    position: relative;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 0 60px;
-    max-width: 1200px;
-    position: relative;
+    justify-content: flex-end;
+    padding: 0 40px 80px;
     z-index: 1;
   }
 
   .hero-tag {
     font-family: var(--mono);
-    color: var(--cyan);
     font-size: 12px;
-    margin-bottom: 20px;
+    color: var(--teal);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--teal);
+  }
+
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(52px, 8vw, 108px);
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 32px;
+    max-width: 900px;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-desc {
+    font-size: 16px;
+    color: var(--muted);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: all 0.2s;
     display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #0e0e0d;
+    font-weight: 600;
+  }
+
+  .btn-primary:hover {
+    background: #d9c98a;
+    transform: translateY(-1px);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--border-strong);
+    color: var(--muted);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ── SECTION SHARED ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 40px;
+    border-top: 1px solid var(--border);
+  }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 60px;
+    display: flex;
     align-items: center;
     gap: 12px;
   }
 
-  .hero-tag::before { content: ''; width: 30px; height: 1px; background: var(--cyan); }
-
-  h1 {
-    font-size: clamp(48px, 8vw, 96px);
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.04em;
-    margin-bottom: 40px;
+  .section-label::after {
+    content: '';
+    flex: 1;
+    max-width: 80px;
+    height: 1px;
+    background: var(--border-strong);
   }
 
-  h1 em { font-style: normal; color: var(--cyan); text-shadow: 0 0 30px rgba(0, 243, 255, 0.4); }
-
-  .hero-desc {
-    font-size: 18px;
-    color: var(--text-secondary);
-    max-width: 550px;
-    margin-bottom: 40px;
+  h2 {
+    font-family: var(--serif);
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 24px;
   }
 
-  /* ── BUTTONS ── */
-  .btn {
-    display: inline-flex;
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1100px;
+  }
+
+  .about-body {
+    font-size: 17px;
+    line-height: 1.75;
+    color: #c8c5be;
+  }
+
+  .about-body p + p { margin-top: 20px; }
+
+  .certs {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cert-item {
+    display: flex;
     align-items: center;
-    padding: 16px 32px;
-    font-family: var(--mono);
-    font-size: 12px;
-    text-decoration: none;
-    transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-    border: 1px solid transparent;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    transition: border-color 0.2s;
   }
 
-  .btn-primary { background: var(--text-primary); color: #000; font-weight: 600; }
-  .btn-primary:hover { background: var(--cyan); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 243, 255, 0.2); }
+  .cert-item:hover { border-color: var(--border-strong); }
 
-  .btn-outline { border: 1px solid var(--border); color: var(--text-primary); margin-left: 15px; }
-  .btn-outline:hover { border-color: var(--cyan); color: var(--cyan); }
+  .cert-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .cert-name {
+    font-size: 13px;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .cert-issuer {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
 
   /* ── SKILLS ── */
+  .skills-section { background: var(--surface); }
+
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    padding: 100px 60px;
-    position: relative;
-    z-index: 1;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    max-width: 1100px;
   }
 
   .skill-card {
     background: var(--surface);
-    border: 1px solid var(--border);
-    padding: 40px;
-    border-radius: 12px;
-    transition: 0.3s;
+    padding: 36px 32px;
   }
 
-  .skill-card:hover {
-    border-color: var(--cyan);
-    background: rgba(255,255,255,0.02);
-    transform: translateY(-5px);
+  .skill-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
   }
 
-  .skill-icon { font-size: 24px; margin-bottom: 20px; color: var(--cyan); }
-  .skill-title { font-size: 20px; font-weight: 600; margin-bottom: 12px; }
-  .skill-desc { color: var(--text-secondary); font-size: 14px; }
+  .skill-icon.erp { background: var(--accent-dim); }
+  .skill-icon.cloud { background: var(--teal-dim); }
+  .skill-icon.biz { background: rgba(255,255,255,0.04); }
+
+  .skill-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .skill-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 16px;
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border: 1px solid var(--border-strong);
+    border-radius: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── EXPERIENCE ── */
+  .timeline {
+    max-width: 700px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 32px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+  }
+
+  .timeline-item:first-child { padding-top: 0; }
+  .timeline-item:last-child { border-bottom: none; }
+
+  .timeline-date {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    padding-top: 4px;
+    line-height: 1.5;
+  }
+
+  .timeline-role {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+
+  .timeline-org {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    letter-spacing: 0.04em;
+  }
+
+  .timeline-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
 
   /* ── CONTACT ── */
-  .contact {
-    padding: 120px 60px;
+  .contact-section {
     text-align: center;
-    border-top: 1px solid var(--border);
+    padding: 120px 40px;
   }
 
-  .contact h2 { font-size: 42px; margin-bottom: 20px; }
+  .contact-section h2 {
+    max-width: 600px;
+    margin: 0 auto 24px;
+  }
 
-  /* ── MOBILE OPTIMIZATION ── */
+  .contact-section p {
+    color: var(--muted);
+    margin-bottom: 48px;
+    font-size: 16px;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1;
+    position: relative;
+  }
+
+  footer span {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.6s ease both; }
+  h1 { animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-desc { animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 768px) {
-    nav { padding: 20px; }
+    nav { padding: 16px 20px; }
+    .nav-links { gap: 20px; }
+    section { padding: 70px 20px; }
+    .hero { padding: 0 20px 60px; }
+    .about-grid { grid-template-columns: 1fr; gap: 48px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
     .nav-links { display: none; }
-    .hero { padding: 0 20px; }
-    h1 { font-size: 54px; }
-    .btn-outline { margin-left: 0; margin-top: 10px; width: 100%; justify-content: center; }
-    .btn-primary { width: 100%; justify-content: center; }
-    .skills-grid { padding: 60px 20px; }
   }
 </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
-  <a href="#" class="nav-logo">DARWESH<span>.TECH</span></a>
+  <a href="#" class="nav-logo">darwesh.tech</a>
   <ul class="nav-links">
-    <li><a href="#skills">Stack</a></li>
-    <li><a href="#experience">History</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-tag">System Architect & ERP Specialist</div>
-  <h1>Scalable <em>ERP</em><br>Infrastructure for<br>Modern Enterprise.</h1>
+  <div class="hero-tag">Available for consulting engagements</div>
+  <h1>ERP systems that<br>actually <em>work</em> for<br>your business.</h1>
   <p class="hero-desc">
-    Bridging the gap between accounting logic and cloud-native performance. Expert ERPNext implementation on AWS for the East African market.
+    ERPNext implementation, customization, and cloud infrastructure — built for operational reality, not just go-live day.
   </p>
   <div class="hero-actions">
-    <a href="#contact" class="btn btn-primary">Start a Consultation</a>
-    <a href="https://www.linkedin.com/in/abdirahman404" target="_blank" class="btn btn-outline">LinkedIn Profile</a>
+    <a href="#contact" class="btn btn-primary">Get in touch →</a>
+    <a href="#experience" class="btn btn-outline">View experience</a>
   </div>
 </section>
 
-<section id="skills" class="skills-grid">
-  <div class="skill-card">
-    <div class="skill-icon">◈</div>
-    <div class="skill-title">ERPNext Mastery</div>
-    <div class="skill-desc">Deep-level Frappe framework customization and financial module alignment for complex business workflows.</div>
-  </div>
-  <div class="skill-card">
-    <div class="skill-icon">◇</div>
-    <div class="skill-title">AWS Cloud Native</div>
-    <div class="skill-desc">Architecting highly available environments (EC2, RDS, S3) specifically optimized for ERP performance.</div>
-  </div>
-  <div class="skill-card">
-    <div class="skill-icon">◎</div>
-    <div class="skill-title">Security & API</div>
-    <div class="skill-desc">Certified API security practices ensuring your enterprise data remains resilient against modern threats.</div>
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div>
+      <h2>Business logic first.<br>Technology second.</h2>
+      <div class="about-body">
+        <p>I'm Abdirahman Mohamed, an ERPNext consultant based in Nairobi. I work at the intersection of ERP implementation and cloud infrastructure — helping businesses move from chaotic spreadsheets and disconnected systems to ERPNext environments that genuinely reflect how their operations work.</p>
+        <p>My background in accounting and bookkeeping at Shell gave me a process-first lens that most technical consultants miss. I don't just configure modules — I map your workflows, identify gaps, and build systems your team will actually use.</p>
+        <p>Currently at Azzir Group, working across multiple industries on ERPNext implementations, financial module configuration, and AWS-based deployments.</p>
+      </div>
+    </div>
+    <div>
+      <div class="section-label" style="margin-bottom: 24px;">Certifications</div>
+      <div class="certs">
+        <div class="cert-item">
+          <div class="cert-dot" style="background: #FF9900;"></div>
+          <div>
+            <div class="cert-name">AWS Certified Cloud Practitioner</div>
+            <div class="cert-issuer">Amazon Web Services</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot" style="background: #5DCAA5;"></div>
+          <div>
+            <div class="cert-name">AWS Solutions Architect — Academy Graduate</div>
+            <div class="cert-issuer">Amazon Web Services · ALX</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot" style="background: var(--accent);"></div>
+          <div>
+            <div class="cert-name">Certified API Security Practitioner</div>
+            <div class="cert-issuer">Cybershujaa</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot" style="background: #9F7AEA;"></div>
+          <div>
+            <div class="cert-name">Advanced Cybersecurity Certificate</div>
+            <div class="cert-issuer">Cybershujaa · USIU Africa</div>
+          </div>
+        </div>
+        <div class="cert-item">
+          <div class="cert-dot" style="background: #63B3ED;"></div>
+          <div>
+            <div class="cert-name">Cloud Computing — AWS</div>
+            <div class="cert-issuer">African Leadership Experience (ALX)</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section id="contact" class="contact">
+<!-- SKILLS -->
+<section id="skills" class="skills-section">
+  <div class="section-label">What I do</div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon erp">⚙️</div>
+      <div class="skill-title">ERPNext Implementation</div>
+      <div class="skill-desc">End-to-end ERP deployments covering financial modules, inventory, HR, and custom workflows tailored to how your business actually operates.</div>
+      <div class="skill-tags">
+        <span class="tag">Frappe</span>
+        <span class="tag">ERPNext</span>
+        <span class="tag">Finance</span>
+        <span class="tag">Customization</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon cloud">☁️</div>
+      <div class="skill-title">Cloud Infrastructure</div>
+      <div class="skill-desc">Deploying and managing ERPNext on AWS — reliable, cost-efficient architectures that scale with your business without over-engineering.</div>
+      <div class="skill-tags">
+        <span class="tag">AWS</span>
+        <span class="tag">Linux</span>
+        <span class="tag">EC2</span>
+        <span class="tag">Security</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon biz">📊</div>
+      <div class="skill-title">Process Analysis</div>
+      <div class="skill-desc">Translating operational reality into system configuration — from requirements gathering and gap analysis to go-live support and team training.</div>
+      <div class="skill-tags">
+        <span class="tag">Requirements</span>
+        <span class="tag">Workflow</span>
+        <span class="tag">Training</span>
+        <span class="tag">Support</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-date">Jan 2026<br>Present</div>
+      <div>
+        <div class="timeline-role">ERPNext Consultant</div>
+        <div class="timeline-org">Azzir Group · Nairobi, Kenya</div>
+        <div class="timeline-desc">Supporting implementation, customization, and optimization of ERPNext systems across client engagements. Focused on financial module configuration, operational efficiency, and cloud-based integrations.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Mar 2023<br>Nov 2025</div>
+      <div>
+        <div class="timeline-role">Sales Operations Coordinator</div>
+        <div class="timeline-org">Suza Logistics · Kenya</div>
+        <div class="timeline-desc">Managed sales operations workflows and process coordination across logistics operations, building hands-on understanding of supply chain and operational systems.</div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-date">Prior</div>
+      <div>
+        <div class="timeline-role">Accounting Bookkeeper</div>
+        <div class="timeline-org">Shell</div>
+        <div class="timeline-desc">Financial workflows, reconciliation processes, and internal controls — the foundation that shapes how I approach ERP implementations from a business-process perspective.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact-section">
+  <div class="section-label" style="justify-content: center;">Contact</div>
   <h2>Let's build something that lasts.</h2>
-  <p class="hero-desc" style="margin: 0 auto 40px auto;">Open for consulting engagements and cloud infrastructure projects.</p>
-  <a href="mailto:abdirahmandarwesh1@gmail.com" class="btn btn-primary">Email Me</a>
+  <p>Open to ERPNext consulting engagements, cloud infrastructure projects, and advisory work across East Africa and remote.</p>
+  <div class="contact-links">
+    <a href="mailto:abdirahmandarwesh1@gmail.com" class="btn btn-primary">abdirahmandarwesh1@gmail.com</a>
+    <a href="https://www.linkedin.com/in/abdirahman404" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+    <a href="tel:+254722966183" class="btn btn-outline">+254 722 966 183</a>
+  </div>
 </section>
 
-<footer style="padding: 60px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; font-family: var(--mono); font-size: 10px; color: var(--text-secondary); text-transform: uppercase;">
-    <div>© 2026 Abdirahman Mohamed</div>
-    <div>Nairobi // Kenya</div>
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Abdirahman Mohamed</span>
+  <span>darwesh.tech · Nairobi, Kenya</span>
 </footer>
 
 </body>
