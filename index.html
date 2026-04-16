@@ -1,386 +1,107 @@
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.06em;
-    text-decoration: none;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdirahman Mohamed — ERPNext Consultant</title>
 
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono&family=Instrument+Sans&display=swap" rel="stylesheet">
 
-  .nav-links a {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
+<style>
+:root {
+  --bg:#0e0e0d;
+  --text:#f0ede6;
+  --muted:#888780;
+  --accent:#C8B97A;
+  --teal:#5DCAA5;
+  --border:rgba(255,255,255,0.07);
+  --border-strong:rgba(255,255,255,0.13);
+  --mono:'DM Mono', monospace;
+  --serif:'DM Serif Display', serif;
+}
 
-  .nav-links a:hover { color: var(--text); }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Instrument Sans', sans-serif;
+}
 
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 120px 40px 80px;
-    z-index: 1;
-    gap: 60px;
-  }
+/* HERO */
+.hero {
+  display:flex;
+  justify-content:space-between;
+  padding:120px 40px;
+  gap:60px;
+}
 
-  .hero-content {
-    flex: 1.2;
-  }
+h1 {
+  font-family:var(--serif);
+  font-size:72px;
+  line-height:1;
+}
 
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--teal);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
+em { color:var(--accent); }
 
-  .hero-tag::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--teal);
-  }
+/* TERMINAL */
+.terminal-wrapper {
+  flex:1;
+  max-width:480px;
+  height:320px;
+  background:#050505;
+  border:1px solid var(--border-strong);
+  border-radius:4px;
+  display:flex;
+  flex-direction:column;
+  font-family:var(--mono);
+}
 
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(52px, 8vw, 108px);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 32px;
-    max-width: 900px;
-  }
+.terminal-header {
+  background:#1a1a19;
+  padding:10px;
+  border-bottom:1px solid var(--border);
+}
 
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
+.terminal-body {
+  padding:15px;
+  flex:1;
+  overflow-y:auto;
+  font-size:13px;
+}
 
-  .hero-desc {
-    font-size: 16px;
-    color: var(--muted);
-    max-width: 480px;
-    line-height: 1.7;
-    margin-bottom: 40px;
-  }
+.terminal-line { margin-bottom:6px; }
+.terminal-prompt { color:var(--teal); }
 
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  /* ── TERMINAL ── */
-  .terminal-wrapper {
-    flex: 1;
-    max-width: 480px;
-    height: 320px;
-    background: #050505;
-    border: 1px solid var(--border-strong);
-    border-radius: 4px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.4);
-    font-family: var(--mono);
-  }
-
-  .terminal-header {
-    background: #1a1a19;
-    padding: 10px 15px;
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .terminal-dots { display: flex; gap: 6px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; }
-  .red { background: #ff5f56; }
-  .yellow { background: #ffbd2e; }
-  .green { background: #27c93f; }
-  
-  .terminal-title {
-    margin-left: 12px;
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-  }
-
-  .terminal-body {
-    padding: 15px;
-    font-size: 13px;
-    color: var(--text);
-    overflow-y: auto;
-    flex: 1;
-  }
-
-  .terminal-line { margin-bottom: 6px; line-height: 1.4; }
-  .terminal-prompt { color: var(--teal); margin-right: 8px; }
-  
-  .input-area { display: flex; align-items: center; }
-  #terminal-input {
-    background: transparent;
-    border: none;
-    color: var(--accent);
-    font-family: var(--mono);
-    font-size: 13px;
-    outline: none;
-    width: 100%;
-  }
-
-  .btn {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #0e0e0d;
-    font-weight: 600;
-  }
-
-  .btn-primary:hover {
-    background: #d9c98a;
-    transform: translateY(-1px);
-  }
-
-  .btn-outline {
-    border: 1px solid var(--border-strong);
-    color: var(--muted);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* ── SECTION SHARED ── */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 100px 40px;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 60px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 80px;
-    height: 1px;
-    background: var(--border-strong);
-  }
-
-  h2 {
-    font-family: var(--serif);
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
-  }
-
-  /* ── SKILLS ── */
-  .skills-section { background: var(--surface); }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    max-width: 1100px;
-  }
-
-  .skill-card {
-    background: var(--surface);
-    padding: 36px 32px;
-  }
-
-  /* ── EXPERIENCE ── */
-  .timeline {
-    max-width: 700px;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 32px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .timeline-item:first-child { padding-top: 0; }
-  .timeline-item:last-child { border-bottom: none; }
-
-  .timeline-date {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    padding-top: 4px;
-    line-height: 1.5;
-  }
-
-  .timeline-role {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .timeline-org {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    margin-bottom: 12px;
-    letter-spacing: 0.04em;
-  }
-
-  .timeline-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-    position: relative;
-  }
-
-  footer span {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-  }
-
-  @media (max-width: 1024px) {
-    .hero { flex-direction: column; padding-top: 100px; align-items: flex-start; }
-    .terminal-wrapper { width: 100%; max-width: none; }
-    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-  }
+#terminal-input {
+  background:transparent;
+  border:none;
+  outline:none;
+  color:var(--accent);
+  width:100%;
+  font-family:var(--mono);
+}
 </style>
 </head>
+
 <body>
 
-<nav>
-  <a href="#" class="nav-logo">darwesh.tech</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
-
 <section class="hero">
-  <div class="hero-content">
-    <div class="hero-tag">Available for consulting engagements</div>
-    <h1>ERP systems that<br>actually <em>work</em> for<br>your business.</h1>
-    <p class="hero-desc">
-      ERPNext implementation, customization, and cloud infrastructure — built for operational reality, not just go-live day.
-    </p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">Get in touch →</a>
-      <a href="#experience" class="btn btn-outline">View experience</a>
-    </div>
+  <div>
+    <h1>ERP systems that<br>actually <em>work</em><br>for your business.</h1>
   </div>
 
   <div class="terminal-wrapper">
-    <div class="terminal-header">
-      <div class="terminal-dots">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
-      </div>
-      <div class="terminal-title">darwesh@nairobi: ~</div>
-    </div>
+    <div class="terminal-header">darwesh@ubuntu:~</div>
+
     <div class="terminal-body" id="terminal-out">
-      <div class="terminal-line">Welcome to Darwesh OS v2.0.4</div>
-      <div class="terminal-line">Type <span style="color:var(--teal)">help</span> to explore the stack.</div>
       <div class="input-area">
-        <span class="terminal-prompt">darwesh@cloud:~$</span>
-        <input type="text" id="terminal-input" spellcheck="false" autofocus autocomplete="off">
+        <span class="terminal-prompt">darwesh@ubuntu:~$</span>
+        <input id="terminal-input" autofocus>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experience">
-  <div class="section-label">Experience</div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">Jan 2026<br>Present</div>
-      <div>
-        <div class="timeline-role">ERPNext Consultant</div>
-        <div class="timeline-org">Azzir Group · Nairobi, Kenya</div>
-        <div class="timeline-desc">Supporting implementation, customization, and optimization of ERPNext systems. Focused on financial module configuration, operational efficiency, and cloud-based integrations.</div>
-      </div>
-    </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 2023<br>Nov 2025</div>
-      <div>
-        <div class="timeline-role">Sales Operations Coordinator</div>
-        <div class="timeline-org">Suza Logistics · Kenya</div>
-        <div class="timeline-desc">Managed sales operations workflows and process coordination across logistics operations, building hands-on understanding of supply chain and operational systems.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer id="contact">
-  <span>© 2026 Abdirahman Mohamed</span>
-  <span>darwesh.tech · Nairobi, Kenya</span>
-</footer>
 <script>
 const input = document.getElementById('terminal-input');
 const output = document.getElementById('terminal-out');
@@ -390,117 +111,70 @@ let history = [];
 let historyIndex = -1;
 let currentPath = "~";
 
-/* FILESYSTEM */
 const fs = {
   "~": {
-    type: "dir",
     children: {
-      about: { type:"file", content:"ERPNext consultant focused on real business workflows + cloud." },
-      skills: { type:"file", content:"ERPNext | AWS | Linux | Networking | POS | Security" },
-      experience: { type:"file", content:"Azzir Group\nSuza Logistics\nShell" },
-      contact: { type:"file", content:"email: abdirahmandarwesh1@gmail.com\nlinkedin: /in/abdirahman404" },
-      projects: {
-        type:"dir",
-        children:{
-          erp:{ type:"file", content:"ERPNext systems, finance modules, automation" },
-          cloud:{ type:"file", content:"AWS infra, VPC, serverless" }
-        }
-      }
+      about:{content:"ERPNext consultant focused on business systems + cloud."},
+      skills:{content:"ERPNext | AWS | Linux | Networking"},
+      experience:{content:"Azzir Group\nSuza Logistics\nShell"},
+      contact:{content:"email: abdirahmandarwesh1@gmail.com"},
+      projects:{type:"dir"}
     }
   }
 };
 
-/* PRINT */
-function print(text, speed=0){
-  const line = document.createElement("div");
-  line.className = "terminal-line";
+function print(text,speed=0){
+  const line=document.createElement("div");
+  line.className="terminal-line";
+  output.insertBefore(line,inputArea);
 
-  output.insertBefore(line, inputArea);
-
-  if(speed===0){
-    line.textContent = text;
-  } else {
+  if(speed===0){ line.textContent=text; }
+  else{
     let i=0;
-    const interval=setInterval(()=>{
-      line.textContent += text[i];
+    const int=setInterval(()=>{
+      line.textContent+=text[i];
       i++;
-      if(i>=text.length) clearInterval(interval);
-    }, speed);
+      if(i>=text.length) clearInterval(int);
+    },speed);
   }
 
-  output.scrollTop = output.scrollHeight;
+  output.scrollTop=output.scrollHeight;
 }
 
-/* PROMPT UPDATE */
-function updatePrompt(){
-  document.querySelector(".terminal-prompt").textContent =
-    `darwesh@ubuntu:${currentPath}$`;
-}
-
-/* COMMANDS */
 function runCommand(cmd){
   const [base,...args]=cmd.split(" ");
 
   switch(base){
     case "help":
-      return `commands:
-ls  cd  cat  clear
-whoami  pwd  open  echo`;
+      return "ls cd cat clear whoami pwd";
 
     case "ls":
-      return Object.keys(fs["~"].children).join("  ");
-
-    case "cd":
-      if(args[0]===".."){
-        currentPath="~";
-        updatePrompt();
-        return "";
-      }
-
-      if(fs["~"].children[args[0]]?.type==="dir"){
-        currentPath=args[0];
-        updatePrompt();
-        return "";
-      }
-
-      return "no such directory";
+      return Object.keys(fs["~"].children).join(" ");
 
     case "cat":
-      const file = fs["~"].children[args[0]];
-      return file?.content || "file not found";
-
-    case "pwd":
-      return currentPath;
+      return fs["~"].children[args[0]]?.content || "not found";
 
     case "whoami":
       return "abdirahman@darwesh.tech";
 
+    case "pwd":
+      return currentPath;
+
     case "clear":
-      const lines = output.querySelectorAll('.terminal-line');
-      lines.forEach(l => l.remove());
+      output.innerHTML="";
+      output.appendChild(inputArea);
       return "";
 
-    case "echo":
-      return args.join(" ");
-
-    case "open":
-      if(args[0]){
-        location.hash=args[0];
-        return `opening ${args[0]}...`;
-      }
-      return "specify section";
-
     default:
-      return `command not found: ${base}`;
+      return "command not found";
   }
 }
 
-/* INPUT HANDLING */
 input.addEventListener("keydown",(e)=>{
   if(e.key==="Enter"){
-    const cmd=input.value.trim();
+    const cmd=input.value;
 
-    print(`darwesh@ubuntu:${currentPath}$ ${cmd}`);
+    print(`darwesh@ubuntu:~$ ${cmd}`);
     const res=runCommand(cmd);
 
     if(res) print(res,5);
@@ -510,25 +184,15 @@ input.addEventListener("keydown",(e)=>{
 
     input.value="";
   }
-
-  if(e.key==="ArrowUp"){
-    historyIndex=Math.max(0,historyIndex-1);
-    input.value=history[historyIndex]||"";
-  }
-
-  if(e.key==="ArrowDown"){
-    historyIndex=Math.min(history.length,historyIndex+1);
-    input.value=history[historyIndex]||"";
-  }
 });
 
-/* BOOT */
 function boot(){
-  print("Booting Darwesh OS v3.2...",10);
-  setTimeout(()=>print("Initializing modules...",10),300);
-  setTimeout(()=>print("Loading ERP stack...",10),600);
-  setTimeout(()=>print("System ready.\nType 'help'\n",10),900);
+  print("Booting Darwesh OS...",10);
+  setTimeout(()=>print("System ready. Type help\n",10),400);
 }
 
 boot();
 </script>
+
+</body>
+</html>
