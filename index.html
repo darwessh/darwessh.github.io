@@ -3,970 +3,592 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdirahman Mohamed — ERPNext Consultant</title>
+<title>Abdirahman Mohamed — ERPNext Implementation Consultant, Nairobi</title>
+<meta name="description" content="ERPNext implementation consultant leading projects from requirements to training, go-live and post go-live support. Eight recent projects across Kenya, Mauritius, Malawi and Tanzania.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js');</script>
+<link rel="stylesheet" href="styles.css">
 
-  :root {
-    --bg: #0e0e0d;
-    --surface: #161614;
-    --border: rgba(255,255,255,0.07);
-    --border-strong: rgba(255,255,255,0.13);
-    --text: #f0ede6;
-    --muted: #888780;
-    --accent: #C8B97A;
-    --accent-dim: rgba(200,185,122,0.12);
-    --teal: #5DCAA5;
-    --teal-dim: rgba(93,202,165,0.1);
-    --serif: 'DM Serif Display', Georgia, serif;
-    --sans: 'Instrument Sans', sans-serif;
-    --mono: 'DM Mono', monospace;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--sans);
-    font-size: 16px;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-    background-size: 64px 64px;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background: rgba(14,14,13,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-logo {
-    font-family: var(--mono);
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 0.06em;
-    text-decoration: none;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 32px;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--muted);
-    text-decoration: none;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-
-  .nav-links a:hover { color: var(--text); }
-
-  /* ── HERO ── */
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 100px 40px 80px;
-    z-index: 1;
-  }
-
-  .hero-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    width: 100%;
-    max-width: 1200px;
-  }
-
-  .hero-tag {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--teal);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .hero-tag::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 1px;
-    background: var(--teal);
-  }
-
-  h1 {
-    font-family: var(--serif);
-    font-size: clamp(40px, 5.5vw, 86px);
-    line-height: 0.95;
-    letter-spacing: -0.02em;
-    color: var(--text);
-    margin-bottom: 32px;
-  }
-
-  h1 em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-desc {
-    font-size: 15px;
-    color: var(--muted);
-    max-width: 420px;
-    line-height: 1.7;
-    margin-bottom: 40px;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  /* ── CLI TERMINAL ── */
-  .hero-cli {
-    background: #0d0d0b;
-    border: 1px solid var(--border-strong);
-    border-radius: 8px;
-    overflow: hidden;
-    font-family: var(--mono);
-    font-size: 13px;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04);
-    display: flex;
-    flex-direction: column;
-    height: 420px;
-    animation: fadeUp 0.6s 0.4s ease both;
-    cursor: text;
-  }
-
-  .cli-titlebar {
-    background: #1a1a17;
-    padding: 10px 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    border-bottom: 1px solid var(--border);
-    flex-shrink: 0;
-  }
-
-  .cli-dots { display: flex; gap: 6px; }
-
-  .cli-dot {
-    width: 11px; height: 11px;
-    border-radius: 50%;
-  }
-
-  .cli-dot.red    { background: #FF5F57; }
-  .cli-dot.yellow { background: #FEBC2E; }
-  .cli-dot.green  { background: #28C840; }
-
-  .cli-title-text {
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    flex: 1;
-    text-align: center;
-  }
-
-  .cli-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 16px 20px;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255,255,255,0.1) transparent;
-  }
-
-  .cli-body::-webkit-scrollbar { width: 4px; }
-  .cli-body::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.1);
-    border-radius: 2px;
-  }
-
-  .cli-line {
-    line-height: 1.65;
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-size: 12.5px;
-  }
-
-  .cli-prompt { color: var(--teal); }
-  .cli-cmd    { color: var(--text); }
-  .cli-out    { color: var(--muted); }
-  .cli-key    { color: var(--accent); }
-  .cli-val    { color: #c8c5be; }
-  .cli-comment{ color: #4a4a44; }
-  .cli-error  { color: #FF6B6B; }
-  .cli-success{ color: var(--teal); }
-
-  .cli-input-row {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    border-top: 1px solid var(--border);
-    flex-shrink: 0;
-    background: rgba(255,255,255,0.015);
-  }
-
-  .cli-input-prompt {
-    color: var(--teal);
-    font-family: var(--mono);
-    font-size: 13px;
-    white-space: nowrap;
-    margin-right: 8px;
-    user-select: none;
-  }
-
-  #cli-input {
-    background: none;
-    border: none;
-    outline: none;
-    color: var(--text);
-    font-family: var(--mono);
-    font-size: 13px;
-    flex: 1;
-    caret-color: var(--accent);
-  }
-
-  .cli-hint {
-    font-size: 10px;
-    color: #3a3a35;
-    padding: 5px 20px;
-    border-top: 1px solid var(--border);
-    letter-spacing: 0.05em;
-    flex-shrink: 0;
-  }
-
-  /* ── BUTTONS ── */
-  .btn {
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    border-radius: 2px;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .btn-primary {
-    background: var(--accent);
-    color: #0e0e0d;
-    font-weight: 600;
-  }
-
-  .btn-primary:hover {
-    background: #d9c98a;
-    transform: translateY(-1px);
-  }
-
-  .btn-outline {
-    border: 1px solid var(--border-strong);
-    color: var(--muted);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-  }
-
-  /* ── SECTION SHARED ── */
-  section {
-    position: relative;
-    z-index: 1;
-    padding: 100px 40px;
-    border-top: 1px solid var(--border);
-  }
-
-  .section-label {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    margin-bottom: 60px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    max-width: 80px;
-    height: 1px;
-    background: var(--border-strong);
-  }
-
-  h2 {
-    font-family: var(--serif);
-    font-size: clamp(32px, 4vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.01em;
-    margin-bottom: 24px;
-  }
-
-  /* ── ABOUT ── */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    max-width: 1100px;
-  }
-
-  .about-body {
-    font-size: 17px;
-    line-height: 1.75;
-    color: #c8c5be;
-  }
-
-  .about-body p + p { margin-top: 20px; }
-
-  .certs { display: flex; flex-direction: column; gap: 12px; }
-
-  .cert-item {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 14px 18px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    transition: border-color 0.2s;
-  }
-
-  .cert-item:hover { border-color: var(--border-strong); }
-
-  .cert-dot {
-    width: 8px; height: 8px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  .cert-name {
-    font-size: 13px;
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  .cert-issuer {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    margin-top: 2px;
-  }
-
-  /* ── SKILLS ── */
-  .skills-section { background: var(--surface); }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    overflow: hidden;
-    max-width: 1100px;
-  }
-
-  .skill-card { background: var(--surface); padding: 36px 32px; }
-
-  .skill-icon {
-    width: 40px; height: 40px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-  }
-
-  .skill-icon.erp   { background: var(--accent-dim); }
-  .skill-icon.cloud { background: var(--teal-dim); }
-  .skill-icon.biz   { background: rgba(255,255,255,0.04); }
-
-  .skill-title {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 10px;
-  }
-
-  .skill-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  .skill-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 16px;
-  }
-
-  .tag {
-    font-family: var(--mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    padding: 4px 10px;
-    border: 1px solid var(--border-strong);
-    border-radius: 2px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* ── EXPERIENCE ── */
-  .timeline { max-width: 700px; display: flex; flex-direction: column; gap: 0; }
-
-  .timeline-item {
-    display: grid;
-    grid-template-columns: 140px 1fr;
-    gap: 32px;
-    padding: 40px 0;
-    border-bottom: 1px solid var(--border);
-    position: relative;
-  }
-
-  .timeline-item:first-child { padding-top: 0; }
-  .timeline-item:last-child  { border-bottom: none; }
-
-  .timeline-date {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-    padding-top: 4px;
-    line-height: 1.5;
-  }
-
-  .timeline-role {
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 4px;
-  }
-
-  .timeline-org {
-    font-family: var(--mono);
-    font-size: 12px;
-    color: var(--accent);
-    margin-bottom: 12px;
-    letter-spacing: 0.04em;
-  }
-
-  .timeline-desc {
-    font-size: 13px;
-    color: var(--muted);
-    line-height: 1.65;
-  }
-
-  /* ── CONTACT ── */
-  .contact-section { text-align: center; padding: 120px 40px; }
-  .contact-section h2 { max-width: 600px; margin: 0 auto 24px; }
-  .contact-section p  { color: var(--muted); margin-bottom: 48px; font-size: 16px; }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1;
-    position: relative;
-  }
-
-  footer span {
-    font-family: var(--mono);
-    font-size: 11px;
-    color: var(--muted);
-    letter-spacing: 0.06em;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-tag     { animation: fadeUp 0.6s ease both; }
-  h1            { animation: fadeUp 0.6s 0.1s ease both; }
-  .hero-desc    { animation: fadeUp 0.6s 0.2s ease both; }
-  .hero-actions { animation: fadeUp 0.6s 0.3s ease both; }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 960px) {
-    .hero-inner { grid-template-columns: 1fr; gap: 48px; }
-    .hero-cli   { height: 340px; }
-  }
-
-  @media (max-width: 768px) {
-    nav      { padding: 16px 20px; }
-    .nav-links { gap: 20px; }
-    section  { padding: 70px 20px; }
-    .hero    { padding: 100px 20px 60px; }
-    .about-grid { grid-template-columns: 1fr; gap: 48px; }
-    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
-    footer   { flex-direction: column; gap: 12px; text-align: center; }
-  }
-
-  @media (max-width: 480px) {
-    .nav-links { display: none; }
-    h1 { font-size: 40px; }
-  }
-</style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- ICON SPRITE -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-clip" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6M9 16h4"/></symbol>
+    <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></symbol>
+    <symbol id="i-sliders" viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="M4.93 4.93l4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></symbol>
+    <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5M3 12a9 3 0 0 0 18 0"/></symbol>
+    <symbol id="i-printer" viewBox="0 0 24 24"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18M16 10a4 4 0 0 1-8 0"/></symbol>
+    <symbol id="i-box" viewBox="0 0 24 24"><path d="M21 8l-9-5-9 5v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v9"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-10 16-10 0 9-4 17-9 17z"/><path d="M4 21c3-6 6-9 10-11"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M2 16h20M6 10V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/></symbol>
+    <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></symbol>
+    <symbol id="i-truck" viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"/><path d="M16 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 1v3M10 1v3M14 1v3"/></symbol>
+    <symbol id="i-till" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M6 11V5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6M7 16h4"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2zM4 6a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  </defs>
+</svg>
+
+<div id="progress"></div>
+
 <nav>
-  <a href="#" class="nav-logo">darwesh.tech</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+  <div class="nav-in">
+    <a href="#top" class="brand"><span class="mono-mark">AM</span>Abdirahman Mohamed</a>
+    <ul class="nav-links">
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#africa">Across Africa</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="cta">Let's collaborate</a></li>
+    </ul>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
-
-    <!-- LEFT: copy -->
-    <div class="hero-left">
-      <div class="hero-tag">Available for consulting engagements</div>
-      <h1>ERP systems that<br>actually <em>work</em> for<br>your business.</h1>
-      <p class="hero-desc">
-        ERPNext implementation, customization, and cloud infrastructure — built for operational reality, not just go-live day.
-      </p>
-      <div class="hero-actions">
-        <a href="#contact" class="btn btn-primary">Get in touch →</a>
-        <a href="#experience" class="btn btn-outline">View experience</a>
-      </div>
-    </div>
-
-    <!-- RIGHT: CLI -->
-    <div class="hero-cli" id="cli-terminal">
-      <div class="cli-titlebar">
-        <div class="cli-dots">
-          <div class="cli-dot red"></div>
-          <div class="cli-dot yellow"></div>
-          <div class="cli-dot green"></div>
-        </div>
-        <div class="cli-title-text">abdirahman@darwesh.tech — bash</div>
-      </div>
-      <div class="cli-body" id="cli-output"></div>
-      <div class="cli-input-row">
-        <span class="cli-input-prompt">abdirahman@darwesh ~$&nbsp;</span>
-        <input type="text" id="cli-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type a command…">
-      </div>
-      <div class="cli-hint">try: help &nbsp;·&nbsp; whoami &nbsp;·&nbsp; ls &nbsp;·&nbsp; cd experience &nbsp;·&nbsp; cd stack &nbsp;·&nbsp; cd certs &nbsp;·&nbsp; tab to autocomplete</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="section-label">About</div>
-  <div class="about-grid">
+<header class="hero" id="top">
+  <div class="cursor-spot" aria-hidden="true"></div>
+  <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="wrap hero-grid">
     <div>
-      <h2>Business logic first.<br>Technology second.</h2>
-      <div class="about-body">
-        <p>I'm Abdirahman Mohamed, an ERPNext consultant based in Nairobi. I work at the intersection of ERP implementation and cloud infrastructure — helping businesses move from chaotic spreadsheets and disconnected systems to ERPNext environments that genuinely reflect how their operations work.</p>
-        <p>My background in retail business financial operations gave me a process-first lens that most technical consultants miss. I don't just configure modules — I map your workflows, identify gaps, and build systems your team will actually use.</p>
-        <p>Currently at Azzir Group, working across multiple industries on ERPNext implementations, financial module configuration, and AWS-based deployments.</p>
+      <div class="eyebrow" data-reveal>ERPNext implementation consultant · Nairobi</div>
+      <h1 data-reveal style="--d:.08s">I lead ERPNext projects from first requirement to <span class="typed-wrap"><span id="typed">go-live</span><span class="caret"></span></span></h1>
+      <p class="lede" data-reveal style="--d:.16s">Hands-on with POS, ERP and cloud systems since 2021, now focused on ERPNext. I work with business owners and delivery teams to turn how a business really runs into a system people adopt, and I own requirements, configuration, training, go-live and the support that follows.</p>
+      <div class="hero-actions" data-reveal style="--d:.24s">
+        <a href="#contact" class="btn btn-primary">Let's collaborate <svg class="ic sm go"><use href="#i-arrow"/></svg></a>
+        <a href="#work" class="btn btn-ghost">See recent work</a>
+      </div>
+      <div class="hero-proof" data-reveal style="--d:.32s">
+        <div><b data-count="8">8</b><span>client projects delivered</span></div>
+        <div><b data-count="4">4</b><span>countries, 4 currencies</span></div>
+        <div><b data-count="7">7</b><span>industries</span></div>
+        <div><b>2021</b><span>started with POS and ERP systems</span></div>
       </div>
     </div>
-    <div>
-      <div class="section-label" style="margin-bottom: 24px;">Certifications</div>
-      <div class="certs">
-        <div class="cert-item">
-          <div class="cert-dot" style="background: #FF9900;"></div>
-          <div>
-            <div class="cert-name">AWS Certified Cloud Practitioner</div>
-            <div class="cert-issuer">Amazon Web Services</div>
-          </div>
+
+    <div class="stack" id="stack" data-reveal style="--d:.2s" aria-hidden="true">
+      <div class="ui ui-a" data-depth="10">
+        <div class="ui-head">
+          <div class="ui-title"><svg class="ic"><use href="#i-file"/></svg>Purchase Invoice</div>
+          <span class="pill" data-cycle="Draft,Confirmed,Submitted" data-state="0">Draft</span>
         </div>
-        <div class="cert-item">
-          <div class="cert-dot" style="background: #5DCAA5;"></div>
-          <div>
-            <div class="cert-name">AWS Solutions Architect — Academy Graduate</div>
-            <div class="cert-issuer">Amazon Web Services · ALX</div>
-          </div>
+        <div class="sk w80"></div><div class="sk"></div><div class="sk w60"></div><div class="sk w40"></div>
+        <div class="dot3"><i class="on"></i><i></i><i></i></div>
+      </div>
+      <div class="ui ui-b" data-depth="18">
+        <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-box"/></svg>Stock check</div><span class="pill" data-state="2">Reconciled</span></div>
+        <div class="bars">
+          <div class="bar-row">Store A<div class="bar-track"><span style="--w:88%"></span></div><svg class="ic"><use href="#i-check"/></svg></div>
+          <div class="bar-row">Store B<div class="bar-track"><span style="--w:64%"></span></div><svg class="ic"><use href="#i-check"/></svg></div>
+          <div class="bar-row">Shop<div class="bar-track"><span style="--w:76%"></span></div><svg class="ic"><use href="#i-check"/></svg></div>
         </div>
-        <div class="cert-item">
-          <div class="cert-dot" style="background: var(--accent);"></div>
-          <div>
-            <div class="cert-name">Certified API Security Practitioner</div>
-            <div class="cert-issuer">Cybershujaa</div>
+      </div>
+      <div class="ui ui-c notif" data-depth="26">
+        <div class="notif-ic"><svg class="ic"><use href="#i-truck"/></svg></div>
+        <div><b>Order dispatched</b><span>Customer notified automatically</span></div>
+      </div>
+      <div class="ui ui-d" data-depth="14">
+        <div class="ui-title" style="margin-bottom:12px"><svg class="ic"><use href="#i-lock"/></svg>Roles</div>
+        <div class="chips-col"><div class="role"><svg class="ic"><use href="#i-till"/></svg>Cashier</div><div class="role"><svg class="ic"><use href="#i-bag"/></svg>Salesperson</div><div class="role"><svg class="ic"><use href="#i-box"/></svg>Store Keeper</div></div>
+      </div>
+      <div class="stack-cap">Illustrative</div>
+    </div>
+  </div>
+</header>
+
+<!-- REACH MARQUEE -->
+<div class="reach" aria-label="Where and what I have delivered">
+  <div class="marquee">
+    <div class="marquee-set">
+      <span class="chip"><svg class="ic"><use href="#i-bag"/></svg>Classic Cosmetics</span>
+      <span class="chip"><svg class="ic"><use href="#i-box"/></svg>REEVON</span>
+      <span class="chip"><svg class="ic"><use href="#i-leaf"/></svg>Greentech Landscaping</span>
+      <span class="chip"><svg class="ic"><use href="#i-bed"/></svg>Ilala Crest Lodge</span>
+      <span class="chip"><svg class="ic"><use href="#i-ball"/></svg>Planet Active</span>
+      <span class="chip"><svg class="ic"><use href="#i-truck"/></svg>GBI Wholesale</span>
+      <span class="chip"><svg class="ic"><use href="#i-leaf"/></svg>Mackinnon Feedlot</span>
+      <span class="chip"><svg class="ic"><use href="#i-sliders"/></svg>Fahaab</span>
+      <span class="chip"><svg class="ic"><use href="#i-pin"/></svg>Kenya · Tanzania · Malawi · Mauritius</span>
+    </div>
+    <div class="marquee-set" aria-hidden="true">
+      <span class="chip"><svg class="ic"><use href="#i-bag"/></svg>Classic Cosmetics</span>
+      <span class="chip"><svg class="ic"><use href="#i-box"/></svg>REEVON</span>
+      <span class="chip"><svg class="ic"><use href="#i-leaf"/></svg>Greentech Landscaping</span>
+      <span class="chip"><svg class="ic"><use href="#i-bed"/></svg>Ilala Crest Lodge</span>
+      <span class="chip"><svg class="ic"><use href="#i-ball"/></svg>Planet Active</span>
+      <span class="chip"><svg class="ic"><use href="#i-truck"/></svg>GBI Wholesale</span>
+      <span class="chip"><svg class="ic"><use href="#i-leaf"/></svg>Mackinnon Feedlot</span>
+      <span class="chip"><svg class="ic"><use href="#i-sliders"/></svg>Fahaab</span>
+      <span class="chip"><svg class="ic"><use href="#i-pin"/></svg>Kenya · Tanzania · Malawi · Mauritius</span>
+    </div>
+  </div>
+</div>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">How I work</div>
+      <h2>One accountable lead, from the first workshop to life after go-live.</h2>
+      <p>Five stages, one chain. Each ends with something tangible you can review, sign off and keep.</p>
+    </div>
+
+    <div class="chain" id="chain" data-reveal>
+      <ol class="chain-list">
+        <li class="chain-card active" tabindex="0" style="--i:0">
+          <i class="chain-dot" aria-hidden="true"></i>
+          <span class="chain-idx">01</span>
+          <div class="chain-box">
+            <div class="chain-art"><img src="images/rome-01.jpg" width="1200" height="1788" alt="Roman survey tools, columns and standard — Requirements" loading="eager"></div>
+            <div class="chain-body">
+              <h3>Requirements</h3>
+              <p>I learn the operation before touching the system, so nothing is built on assumptions.</p>
+              <div class="chain-got"><b>You receive</b><ul><li><svg class="ic"><use href="#i-check"/></svg>Discovery questionnaire</li><li><svg class="ic"><use href="#i-check"/></svg>Functional requirements document</li><li><svg class="ic"><use href="#i-check"/></svg>Gap analysis</li></ul></div>
+            </div>
           </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot" style="background: #9F7AEA;"></div>
-          <div>
-            <div class="cert-name">Advanced Cybersecurity Certificate</div>
-            <div class="cert-issuer">Cybershujaa · USIU Africa</div>
+        </li>
+        <li class="chain-card" tabindex="0" style="--i:1">
+          <i class="chain-dot" aria-hidden="true"></i>
+          <span class="chain-idx">02</span>
+          <div class="chain-box">
+            <div class="chain-art"><img src="images/rome-02.jpg" width="1200" height="1788" alt="Temple model, compass and plans — Design" loading="lazy"></div>
+            <div class="chain-body">
+              <h3>Design</h3>
+              <p>Workflows, permissions and accounts are designed and shown before they are built.</p>
+              <div class="chain-got"><b>You receive</b><ul><li><svg class="ic"><use href="#i-check"/></svg>Workflow mockups</li><li><svg class="ic"><use href="#i-check"/></svg>Role and permission matrix</li><li><svg class="ic"><use href="#i-check"/></svg>Chart of accounts</li></ul></div>
+            </div>
           </div>
-        </div>
-        <div class="cert-item">
-          <div class="cert-dot" style="background: #63B3ED;"></div>
-          <div>
-            <div class="cert-name">Cloud Computing — AWS</div>
-            <div class="cert-issuer">African Leadership Experience (ALX)</div>
+        </li>
+        <li class="chain-card" tabindex="0" style="--i:2">
+          <i class="chain-dot" aria-hidden="true"></i>
+          <span class="chain-idx">03</span>
+          <div class="chain-box">
+            <div class="chain-art"><img src="images/rome-03.jpg" width="1200" height="1788" alt="Builders raising stone with crane — Build and test" loading="lazy"></div>
+            <div class="chain-body">
+              <h3>Build &amp; test</h3>
+              <p>Configuration and data migration, checked against your real figures.</p>
+              <div class="chain-got"><b>You receive</b><ul><li><svg class="ic"><use href="#i-check"/></svg>Configured, tested system</li><li><svg class="ic"><use href="#i-check"/></svg>Reconciled opening data</li><li><svg class="ic"><use href="#i-check"/></svg>Branded print formats</li></ul></div>
+            </div>
           </div>
+        </li>
+        <li class="chain-card" tabindex="0" style="--i:3">
+          <i class="chain-dot" aria-hidden="true"></i>
+          <span class="chain-idx">04</span>
+          <div class="chain-box">
+            <div class="chain-art"><img src="images/rome-04.jpg" width="1200" height="1788" alt="Forum amphitheatre instruction — Training and go-live" loading="lazy"></div>
+            <div class="chain-body">
+              <h3>Training &amp; go-live</h3>
+              <p>Each role is trained and assessed, and I lead the cutover so launch day is controlled.</p>
+              <div class="chain-got"><b>You receive</b><ul><li><svg class="ic"><use href="#i-check"/></svg>Role-based training</li><li><svg class="ic"><use href="#i-check"/></svg>Competency assessment</li><li><svg class="ic"><use href="#i-check"/></svg>Led cutover plan</li></ul></div>
+            </div>
+          </div>
+        </li>
+        <li class="chain-card" tabindex="0" style="--i:4">
+          <i class="chain-dot" aria-hidden="true"></i>
+          <span class="chain-idx">05</span>
+          <div class="chain-box">
+            <div class="chain-art"><img src="images/rome-05.jpg" width="1200" height="1788" alt="Roman road, milestone and laurel — Post go-live care" loading="lazy"></div>
+            <div class="chain-body">
+              <h3>Post go-live care</h3>
+              <p>Real usage always surfaces refinements. I stay accountable for them.</p>
+              <div class="chain-got"><b>You receive</b><ul><li><svg class="ic"><use href="#i-check"/></svg>Issue resolution</li><li><svg class="ic"><use href="#i-check"/></svg>Workflow and permission tuning</li><li><svg class="ic"><use href="#i-check"/></svg>A named point of contact</li></ul></div>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" class="alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Selected work</div>
+      <h2>Eight recent projects. Five worth a closer look.</h2>
+      <p>Each engagement had its own constraints: tax rules, currencies, existing systems. These five show the decisions that shaped them, with more projects below.</p>
+    </div>
+
+    <!-- CASE 1 -->
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-bag"/></svg></div><div><div class="case-num">CASE 01</div><h3>Classic Cosmetics · Tradeflow POS</h3><div class="case-meta">Retail · POS · multi-store inventory</div></div></div>
+        <span class="status">Active engagement</span>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <div class="block"><div class="lab">Challenge</div><p>A multi-location cosmetics retailer needed a POS with real controls, stock they could trust across locations, and a purchasing flow that matched how goods actually arrive.</p></div>
+          <div class="block"><div class="lab">Scope I led</div><p>Specification of a custom cosmetics app with the development team, POS design and bug triage on ERPNext v16, purchase invoice workflow, stock and ledger reconciliation, print formats, WhatsApp notifications, cashier training.</p></div>
         </div>
+        <div class="case-col">
+          <div class="lab">Decisions that mattered</div>
+          <ul class="decisions">
+            <li><b>Workflow instead of Purchase Receipt</b> for invoice confirmation, modelled in Desk-style mockups before any build.</li>
+            <li><b>Locked-down roles.</b> Separate cashier and salesperson architecture, with shift lifecycle and permissions enforced through the Role Permission Manager.</li>
+            <li><b>Verified, not assumed.</b> Stock and ledgers reconciled across three locations with fuzzy matching; a permissions fault traced to owner and warehouse mismatches.</li>
+            <li><b>Counts that stick.</b> A 7-day rolling count of 1,947 items split across 7 counters, tracked item by item.</li>
+          </ul>
+          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>A POS with defined roles and shift controls, stock verified across locations, and cashiers assessed against a competency matrix.</p></div></div>
+          <!-- TODO: add a measurable result here (e.g. discrepancy rate found/fixed, days to stable POS, cashiers certified) -->
+        </div>
+      </div>
+      <div class="case-flow">
+        <div>
+          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-file"/></svg>Purchase Invoice</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node ac"><svg class="ic"><use href="#i-check"/></svg>Confirmation workflow</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-box"/></svg>Stock updated</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-shield"/></svg>Verified ledger</span></div>
+          <div class="flow-cap">Simplified view of the purchasing flow design.</div>
+          <!-- TODO: replace with a sanitized workflow mockup or print-format preview image -->
+        </div>
+        <div class="mini" aria-hidden="true">
+          <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-file"/></svg>Purchase Invoice</div><span class="pill" data-cycle="Draft,Confirmed,Submitted" data-state="0">Draft</span></div>
+          <div class="sk w80"></div><div class="sk w60"></div>
+          <div class="dot3"><i class="on"></i><i></i><i></i></div>
+        </div>
+      </div>
+      <div class="case-foot"><span class="tag">POS</span><span class="tag">Workflows</span><span class="tag">Roles &amp; permissions</span><span class="tag">Stock reconciliation</span><span class="tag">Training</span></div>
+    </article>
+
+    <!-- CASE 2 -->
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-box"/></svg></div><div><div class="case-num">CASE 02</div><h3>REEVON</h3><div class="case-meta">Athletic apparel · E-commerce · Shopify + ERPNext</div></div></div>
+        <span class="status done">Handed over</span>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <div class="block"><div class="lab">Challenge</div><p>A new apparel brand selling on Shopify needed orders, invoicing and dispatch connected in one system, with local payments and correct tax from day one.</p></div>
+          <div class="block"><div class="lab">Scope I led</div><p>Shopify integration, payment gateway selection, tax templates, branded documents, dispatch notifications, email configuration and handover.</p></div>
+        </div>
+        <div class="case-col">
+          <div class="lab">Decisions that mattered</div>
+          <ul class="decisions">
+            <li><b>Gateway chosen on evidence.</b> Compared four providers on readiness and KYC timing; IntaSend went live while others stayed in reserve.</li>
+            <li><b>Order chain mapped end to end</b> from Sales Order to Sales Invoice to Delivery Note.</li>
+            <li><b>Customers told automatically.</b> A Server Script sends the dispatch notification when a Delivery Note is submitted.</li>
+            <li><b>Documents that print reliably.</b> Branded formats built with PDF-safe layouts, and a letterhead fix for a domain mismatch.</li>
+          </ul>
+          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>Orders flow from Shopify through to dispatch notification, with Kenya VAT and import duty templates in place. The project reached handover.</p></div></div>
+          <!-- TODO: add a measurable result (e.g. orders processed, manual steps removed) -->
+        </div>
+      </div>
+      <div class="case-flow">
+        <div>
+          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-bag"/></svg>Shopify order</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-file"/></svg>Sales Order</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-file"/></svg>Sales Invoice</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-truck"/></svg>Delivery Note</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-bell"/></svg>Dispatch notification</span></div>
+          <div class="flow-cap">The order-to-dispatch chain, automated.</div>
+        </div>
+        <div class="mini notif" aria-hidden="true" style="display:flex;gap:12px;align-items:center">
+          <div class="notif-ic"><svg class="ic"><use href="#i-truck"/></svg></div>
+          <div><b>Your order is on its way</b><span>Sent on Delivery Note submit · illustrative</span></div>
+        </div>
+      </div>
+      <div class="case-foot"><span class="tag">Shopify</span><span class="tag">Integrations</span><span class="tag">Server Scripts</span><span class="tag">Payments</span><span class="tag">Tax</span></div>
+    </article>
+
+    <!-- CASE 3 -->
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-leaf"/></svg></div><div><div class="case-num">CASE 03</div><h3>Greentech Landscaping</h3><div class="case-meta">Landscaping · Services · Mauritius · MUR</div></div></div>
+        <span class="status">Active engagement</span>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <div class="block"><div class="lab">Challenge</div><p>A landscaping company running on QuickBooks needed installation projects and recurring maintenance visits managed in one system.</p></div>
+          <div class="block"><div class="lab">Scope I led</div><p>Requirements document, gap analysis of the custom app build, accounting migration from QuickBooks, module fit assessment and branded documents.</p></div>
+        </div>
+        <div class="case-col">
+          <div class="lab">Decisions that mattered</div>
+          <ul class="decisions">
+            <li><b>Use the standard where it fits.</b> ERPNext Projects recommended for installation jobs.</li>
+            <li><b>Build only where it doesn't.</b> A custom recurring-visit build for maintenance, rather than bending a module out of shape.</li>
+            <li><b>Clean migration.</b> The chart of accounts was brought across from a QuickBooks export, 283 rows in MUR.</li>
+            <li><b>Safe styling.</b> Six print formats with namespaced CSS so they never clash with Frappe's own styles.</li>
+          </ul>
+          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>Requirements and gap analysis completed, accounts migrated, six branded documents delivered, and a clear boundary between standard and custom.</p></div></div>
+          <!-- TODO: add current build/go-live status or a measurable result -->
+        </div>
+      </div>
+      <div class="case-flow">
+        <div>
+          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-folder"/></svg>Installation jobs</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-check"/></svg>ERPNext Projects</span></div>
+          <div class="flow flowseq" style="margin-top:10px"><span class="node"><svg class="ic"><use href="#i-leaf"/></svg>Maintenance visits</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node ac"><svg class="ic"><use href="#i-code"/></svg>Custom recurring build</span></div>
+          <div class="flow-cap">Standard where it fits, custom where it doesn't.</div>
+        </div>
+        <div class="mini" aria-hidden="true">
+          <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-leaf"/></svg>Recurring visits</div></div>
+          <div class="week"><span class="on">M</span><span>T</span><span>W</span><span class="on">T</span><span>F</span><span>S</span><span>S</span></div>
+          <div class="lane">Illustrative schedule</div>
+        </div>
+      </div>
+      <div class="case-foot"><span class="tag">FRD</span><span class="tag">Gap analysis</span><span class="tag">Data migration</span><span class="tag">Projects module</span><span class="tag">Print formats</span></div>
+    </article>
+
+    <!-- CASE 4 -->
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-bed"/></svg></div><div><div class="case-num">CASE 04</div><h3>Ilala Crest Lodge</h3><div class="case-meta">Hospitality · Malawi · MWK</div></div></div>
+        <span class="status">Active engagement</span>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <div class="block"><div class="lab">Challenge</div><p>A lodge needed an accounting foundation that mirrored its real books, so opening balances would land correctly on day one.</p></div>
+          <div class="block"><div class="lab">Scope I led</div><p>Chart of accounts design, import preparation, discovery questionnaire and document branding.</p></div>
+        </div>
+        <div class="case-col">
+          <div class="lab">Decisions that mattered</div>
+          <ul class="decisions">
+            <li><b>Start from the real trial balance,</b> not a generic template: 118 accounts that balance to the client's own figures.</li>
+            <li><b>Import-ready from the start.</b> Reformatted to the ERPNext v16 importer specification and merged with 45 additional accounts.</li>
+            <li><b>Questions before configuration.</b> A discovery questionnaire captured operations before design began.</li>
+          </ul>
+          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>A balanced, import-ready chart of accounts built from the client's actual books, plus branded delivery documents.</p></div></div>
+          <!-- TODO: add current status (e.g. go-live date, modules live) -->
+        </div>
+      </div>
+      <div class="case-flow">
+        <div>
+          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-file"/></svg>Client trial balance</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-db"/></svg>118 accounts</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node ac"><svg class="ic"><use href="#i-folder"/></svg>+45 added</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-check"/></svg>v16 importer ready</span></div>
+          <div class="flow-cap">How the opening ledger was built.</div>
+        </div>
+        <div class="mini" aria-hidden="true">
+          <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-db"/></svg>Chart of accounts</div></div>
+          <div class="tree"><div><svg class="ic"><use href="#i-folder"/></svg>Assets</div><div class="sub">Current assets</div><div><svg class="ic"><use href="#i-folder"/></svg>Liabilities</div><div><svg class="ic"><use href="#i-folder"/></svg>Income</div><div><svg class="ic"><use href="#i-folder"/></svg>Expenses</div></div>
+          <div class="stamp"><svg class="ic"><use href="#i-check"/></svg>Balanced to trial balance</div>
+        </div>
+      </div>
+      <div class="case-foot"><span class="tag">Chart of accounts</span><span class="tag">Trial balance</span><span class="tag">Discovery</span><span class="tag">Hospitality</span></div>
+    </article>
+
+    <!-- CASE 5 -->
+    <article class="case" style="margin-bottom:0" data-reveal>
+      <div class="case-head">
+        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-ball"/></svg></div><div><div class="case-num">CASE 05</div><h3>Planet Active</h3><div class="case-meta">Equipment leasing &amp; manufacturing · Tanzania · TZS</div></div></div>
+        <span class="status">Active engagement</span>
+      </div>
+      <div class="case-body">
+        <div class="case-col">
+          <div class="block"><div class="lab">Challenge</div><p>A pool table leasing business needed to track what goes into each table and where every table is, by serial number.</p></div>
+          <div class="block"><div class="lab">Scope I led</div><p>Requirements review, BOM and serial tracking design, compliance review and item master clean-up.</p></div>
+        </div>
+        <div class="case-col">
+          <div class="lab">Decisions that mattered</div>
+          <ul class="decisions">
+            <li><b>Compliance raised early.</b> A Tanzania VAT and EFD gap was flagged before build, when it is cheap to address.</li>
+            <li><b>Design around serial numbers,</b> linking bills of materials to individual tables.</li>
+            <li><b>Item master fixed first.</b> A 127-item raw materials price list in TZS was audited and its code scheme conflicts resolved.</li>
+          </ul>
+          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>Validated requirements, a compliance risk surfaced up front, and a clean item foundation to build on.</p></div></div>
+          <!-- TODO: add current status or measurable result -->
+        </div>
+      </div>
+      <div class="case-flow">
+        <div>
+          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-box"/></svg>Raw materials</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-layout"/></svg>BOM</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-ball"/></svg>Serial-numbered table</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-check"/></svg>Lease tracking</span></div>
+          <div class="flow-cap">From components to a tracked, leased asset.</div>
+        </div>
+        <div class="mini" aria-hidden="true">
+          <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-layout"/></svg>Bill of materials</div></div>
+          <div class="tree"><div><svg class="ic"><use href="#i-ball"/></svg>Pool table · serial tracked</div><div class="sub">Frame</div><div class="sub">Cloth</div><div class="sub">Cushions</div><div class="sub">Pockets</div></div>
+          <div class="lane">Illustrative</div>
+        </div>
+      </div>
+      <div class="case-foot"><span class="tag">Manufacturing</span><span class="tag">BOM</span><span class="tag">Serial tracking</span><span class="tag">Tax compliance</span></div>
+    </article>
+
+    <div class="more-head" data-reveal>More recent projects</div>
+    <div class="more-grid">
+      <div class="more" data-reveal>
+        <div class="more-top"><div class="case-ico"><svg class="ic"><use href="#i-truck"/></svg></div><span class="tag">Distribution</span></div>
+        <h3>GBI</h3>
+        <div class="case-meta">Wholesale apparel distribution · Nairobi, Kenya</div>
+        <p>A large wholesale clothing distributor in Nairobi, moving high-volume stock and trade customers onto ERPNext.</p>
+        <!-- TODO: add what you delivered for GBI (modules, scale, a key decision) -->
+        <span class="tag">ERPNext implementation</span>
+      </div>
+      <div class="more" data-reveal style="--d:.1s">
+        <div class="more-top"><div class="case-ico"><svg class="ic"><use href="#i-leaf"/></svg></div><span class="tag">Agribusiness</span></div>
+        <h3>Mackinnon Feedlot</h3>
+        <div class="case-meta">Livestock · cattle sourced from Kitui, Kenya</div>
+        <p>A major cattle importer and feedlot operation, sourcing from Kitui and managing livestock as inventory.</p>
+        <!-- TODO: add what you delivered for Mackinnon (livestock stock tracking, costing, etc.) -->
+        <span class="tag">ERPNext implementation</span>
+      </div>
+      <div class="more" data-reveal style="--d:.2s">
+        <div class="more-top"><div class="case-ico"><svg class="ic"><use href="#i-sliders"/></svg></div><span class="tag">ERPNext</span></div>
+        <h3>Fahaab</h3>
+        <div class="case-meta">ERPNext implementation</div>
+        <p>Implementation engagement delivered alongside the projects above.</p>
+        <!-- TODO: add Fahaab's sector, location and what you delivered, then pin it on the map -->
+        <span class="tag">ERPNext implementation</span>
+      </div>
+    </div>
+
+    <!-- TODO: testimonial block goes here once you have a client quote -->
+  </div>
+</section>
+
+<!-- ACROSS AFRICA -->
+<section id="africa">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Across Africa</div>
+      <h2>Four countries, four currencies, one way of working.</h2>
+      <p>Tax rules, currencies and operating realities change from market to market. I've configured ERPNext for each of them. Hover the map or pick a country.</p>
+    </div>
+    <div class="africa-grid">
+      <div class="map-card" data-reveal>
+        <div class="map-wrap" id="mapWrap">
+          <svg id="mapSvg" viewBox="0 0 780 730" aria-hidden="true"><g id="mapDots"></g><g id="mapArcs"></g></svg>
+          <button class="pin hub" data-loc="kenya" aria-label="Kenya"><i></i><span>Nairobi · base</span></button>
+          <button class="pin" data-loc="tanzania" aria-label="Tanzania"><i></i><span>Tanzania</span></button>
+          <button class="pin" data-loc="malawi" aria-label="Malawi"><i></i><span>Malawi</span></button>
+          <button class="pin left" data-loc="mauritius" aria-label="Mauritius"><i></i><span>Mauritius</span></button>
+        </div>
+        <div class="map-cap">Dotted map, approximate positions.</div>
+      </div>
+      <div class="loc-list" data-reveal style="--d:.15s">
+        <button class="loc" data-loc="kenya"><span class="loc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><span><b>Kenya · Nairobi &amp; Kitui</b><small>GBI, Mackinnon Feedlot, REEVON</small></span><span class="cur">KES</span></button>
+        <button class="loc" data-loc="tanzania"><span class="loc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><span><b>Tanzania</b><small>Planet Active · VAT and EFD compliance</small></span><span class="cur">TZS</span></button>
+        <button class="loc" data-loc="malawi"><span class="loc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><span><b>Malawi</b><small>Ilala Crest Lodge · hospitality accounts</small></span><span class="cur">MWK</span></button>
+        <button class="loc" data-loc="mauritius"><span class="loc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><span><b>Mauritius</b><small>Greentech Landscaping · QuickBooks migration</small></span><span class="cur">MUR</span></button>
+        <!-- TODO: once you confirm Classic Cosmetics and Fahaab locations, add them to the right country here -->
+        <div class="loc-note">Also delivered: Classic Cosmetics, Fahaab.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SKILLS -->
-<section id="skills" class="skills-section">
-  <div class="section-label">What I do</div>
-  <div class="skills-grid">
-    <div class="skill-card">
-      <div class="skill-icon erp">⚙️</div>
-      <div class="skill-title">ERPNext Implementation</div>
-      <div class="skill-desc">End-to-end ERP deployments covering financial modules, inventory, HR, and custom workflows tailored to how your business actually operates.</div>
-      <div class="skill-tags">
-        <span class="tag">Frappe</span><span class="tag">ERPNext</span><span class="tag">Finance</span><span class="tag">Customization</span>
-      </div>
+<!-- BACKGROUND -->
+<section id="background">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Domain depth</div>
+      <h2>I've worked the till, the stock room and the month-end close.</h2>
+      <p>Before consulting, I ran the operations ERPNext now models, and trained in cloud and security alongside. That is why my designs start from controls and reconciliation, not just settings.</p>
     </div>
-    <div class="skill-card">
-      <div class="skill-icon cloud">☁️</div>
-      <div class="skill-title">Cloud Infrastructure</div>
-      <div class="skill-desc">Deploying and managing ERPNext on AWS — reliable, cost-efficient architectures that scale with your business without over-engineering.</div>
-      <div class="skill-tags">
-        <span class="tag">AWS</span><span class="tag">Linux</span><span class="tag">EC2</span><span class="tag">Security</span>
+    <div class="depth-grid">
+      <div class="depth-card" data-reveal>
+        <div class="depth-top"><div class="d-ico"><svg class="ic"><use href="#i-till"/></svg></div><div class="when">2024 – 2025</div></div>
+        <h3>Asst. Manager, Financial Operations</h3>
+        <div class="org">Shell Fuels · Bungoma</div>
+        <p>Administered POS and fuel card systems across 20+ user accounts, resolved 90% of IT incidents in under 15 minutes, and cut cashier onboarding from 5 days to 2.</p>
+        <div class="carry"><b>What I bring</b>Training that works, and an eye for payment and fraud risks.</div>
       </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon biz">📊</div>
-      <div class="skill-title">Process Analysis</div>
-      <div class="skill-desc">Translating operational reality into system configuration — from requirements gathering and gap analysis to go-live support and team training.</div>
-      <div class="skill-tags">
-        <span class="tag">Requirements</span><span class="tag">Workflow</span><span class="tag">Training</span><span class="tag">Support</span>
+      <div class="depth-card" data-reveal style="--d:.1s">
+        <div class="depth-top"><div class="d-ico"><svg class="ic"><use href="#i-truck"/></svg></div><div class="when">2023 – 2024</div></div>
+        <h3>B2B Sales &amp; Operations</h3>
+        <div class="org">Suza Logistics · Eldoret</div>
+        <p>Managed bulk fuel export sales and dispatch on an ERP, closing deals with 20+ commercial clients.</p>
+        <div class="carry"><b>What I bring</b>An understanding of how sales, inventory and dispatch depend on each other.</div>
+      </div>
+      <div class="depth-card" data-reveal style="--d:.2s">
+        <div class="depth-top"><div class="d-ico"><svg class="ic"><use href="#i-coffee"/></svg></div><div class="when">2021 – 2023</div></div>
+        <h3>Cashier Supervisor</h3>
+        <div class="org">Noor Cafe · Bungoma</div>
+        <p>Ran a hospitality POS daily, managed accounts for 15+ staff and handled end-of-day reconciliation, including service during downtime.</p>
+        <div class="carry"><b>What I bring</b>Respect for the front line, where a system succeeds or fails.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
-<section id="experience">
-  <div class="section-label">Experience</div>
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-date">Jan 2026<br>Present</div>
-      <div>
-        <div class="timeline-role">ERPNext Consultant</div>
-        <div class="timeline-org">Azzir Group · Nairobi, Kenya</div>
-        <div class="timeline-desc">Supporting implementation, customization, and optimization of ERPNext systems across client engagements. Focused on financial module configuration, operational efficiency, and cloud-based integrations.</div>
-      </div>
+<!-- SERVICES -->
+<section id="services" class="alt">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <div class="eyebrow">Services</div>
+      <h2>Where I take charge.</h2>
+      <p>Engage me for the full journey, or bring me in for a specific stage.</p>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-date">May 2024<br>Dec 2025</div>
-      <div>
-        <div class="timeline-role">Asst. Manager — Financial Operations</div>
-        <div class="timeline-org">Shell Fuels · Bungoma, Kenya</div>
-        <div class="timeline-desc">Administered Lipaspot POS and Shell Card systems across 20+ user accounts. Resolved 90% of IT incidents under 15 minutes. Cut cashier onboarding from 5 days to 2 days through structured training on payment workflows and fraud prevention.</div>
-      </div>
+    <div class="svc-grid">
+      <div class="svc" data-reveal><div class="svc-ico"><svg class="ic"><use href="#i-clip"/></svg></div><h3>Requirements &amp; FRDs</h3><p>Discovery, functional requirement documents and gap analysis so the build starts from clarity.</p></div>
+      <div class="svc" data-reveal style="--d:.08s"><div class="svc-ico"><svg class="ic"><use href="#i-sliders"/></svg></div><h3>ERPNext implementation</h3><p>Finance, inventory, POS, projects and manufacturing, configured around your real workflows and roles.</p></div>
+      <div class="svc" data-reveal style="--d:.16s"><div class="svc-ico"><svg class="ic"><use href="#i-plug"/></svg></div><h3>Integrations &amp; customization</h3><p>Shopify, payment gateways, WhatsApp and email alerts, Server Scripts, and custom app specifications handed to developers.</p></div>
+      <div class="svc" data-reveal><div class="svc-ico"><svg class="ic"><use href="#i-db"/></svg></div><h3>Data migration</h3><p>Charts of accounts, item masters and opening stock cleaned, validated and reconciled before import.</p></div>
+      <div class="svc" data-reveal style="--d:.08s"><div class="svc-ico"><svg class="ic"><use href="#i-printer"/></svg></div><h3>Print formats &amp; documents</h3><p>Invoices, delivery notes and thermal receipts that match your brand and print correctly.</p></div>
+      <div class="svc" data-reveal style="--d:.16s"><div class="svc-ico"><svg class="ic"><use href="#i-cap"/></svg></div><h3>Training, go-live &amp; support</h3><p>Role-based training, led cutover, and continued care after launch.</p></div>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Mar 2023<br>Apr 2024</div>
-      <div>
-        <div class="timeline-role">B2B Sales &amp; Operations</div>
-        <div class="timeline-org">Suza Logistics · Eldoret, Kenya</div>
-        <div class="timeline-desc">Managed bulk fuel export sales and operations using RECTS ERP for inventory tracking and dispatch. Closed deals with 20+ commercial clients including transporters and regional buyers.</div>
-      </div>
+  </div>
+</section>
+
+<!-- CREDENTIALS -->
+<section>
+  <div class="wrap cred">
+    <div data-reveal>
+      <div class="eyebrow">Working knowledge</div>
+      <h2>Tools I deliver with.</h2>
+      <ul class="cred-list">
+        <li><svg class="ic"><use href="#i-sliders"/></svg>ERPNext &amp; Frappe <span>Doctypes, Workflows, Server and Client Scripts, Role Permissions, Data Import</span></li>
+        <li><svg class="ic"><use href="#i-printer"/></svg>Print &amp; documents <span>Jinja formats, thermal and A4, branded letterheads</span></li>
+        <li><svg class="ic"><use href="#i-code"/></svg>Data work <span>Python, pandas, Excel, reconciliation scripts</span></li>
+        <li><svg class="ic"><use href="#i-plug"/></svg>Integrations <span>Shopify, IntaSend, WhatsApp, SMTP</span></li>
+      </ul>
     </div>
-    <div class="timeline-item">
-      <div class="timeline-date">Sept 2021<br>Feb 2023</div>
-      <div>
-        <div class="timeline-role">Cashier Supervisor</div>
-        <div class="timeline-org">Noor Cafe · Bungoma, Kenya</div>
-        <div class="timeline-desc">Operated Hotel Master POS daily in a live hospitality environment. Managed accounts for 15+ staff, handled end-of-day reconciliation, and maintained service continuity during POS downtime.</div>
-      </div>
+    <div data-reveal style="--d:.12s">
+      <div class="eyebrow">Credentials</div>
+      <h2>Cloud and security grounding.</h2>
+      <ul class="cred-list">
+        <li><svg class="ic"><use href="#i-cloud"/></svg>AWS Certified Cloud Practitioner <span>Amazon Web Services</span></li>
+        <li><svg class="ic"><use href="#i-cloud"/></svg>AWS Solutions Architect Academy <span>ALX Africa</span></li>
+        <li><svg class="ic"><use href="#i-shield"/></svg>Certified API Security Practitioner <span>Cybershujaa</span></li>
+        <li><svg class="ic"><use href="#i-shield"/></svg>Advanced Cybersecurity Certificate <span>Cybershujaa · USIU Africa</span></li>
+      </ul>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="section-label" style="justify-content: center;">Contact</div>
-  <h2>Let's build something that lasts.</h2>
-  <p>Open to ERPNext consulting engagements, cloud infrastructure projects, and advisory work across East Africa and remote.</p>
-  <div class="contact-links">
-    <a href="mailto:darwesh.cm@gmail.com" class="btn btn-primary">darwesh.cm@gmail.com</a>
-    <a href="https://www.linkedin.com/in/abdirahman404" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
-    <a href="tel:+254722966183" class="btn btn-outline">+254 722 966 183</a>
+<section id="contact" class="contact">
+  <div class="wrap contact-grid">
+    <div data-reveal>
+      <div class="eyebrow">Let's collaborate</div>
+      <h2>Bring me the project. I'll take it from requirements to go-live and beyond.</h2>
+      <p class="lede">Tell me about your business and what you want the system to do. I'll respond with the right questions and a clear plan.</p>
+      <div class="contact-links">
+        <a href="mailto:darwesh.cm@gmail.com?subject=ERPNext%20project%20enquiry" class="btn btn-primary"><svg class="ic sm"><use href="#i-mail"/></svg>darwesh.cm@gmail.com</a>
+        <a href="https://www.linkedin.com/in/abdirahman404" target="_blank" rel="noopener" class="btn btn-ghost"><svg class="ic sm" style="fill:currentColor;stroke:none"><use href="#i-in"/></svg>LinkedIn</a>
+        <a href="tel:+254722966183" class="btn btn-ghost"><svg class="ic sm"><use href="#i-phone"/></svg>+254 722 966 183</a>
+      </div>
+    </div>
+    <div class="next" data-reveal style="--d:.15s">
+      <div class="next-t">What happens next</div>
+      <div class="next-row"><div class="next-ic"><svg class="ic"><use href="#i-users"/></svg></div><div><b>Intro conversation</b><span>You describe the business and the goal. I ask the questions that matter.</span></div></div>
+      <div class="next-row"><div class="next-ic"><svg class="ic"><use href="#i-clip"/></svg></div><div><b>Scoping</b><span>We agree what is in and out, the stages and the deliverables.</span></div></div>
+      <div class="next-row"><div class="next-ic"><svg class="ic"><use href="#i-arrow"/></svg></div><div><b>Proposal and kickoff</b><span>A clear plan, then I take charge of delivery.</span></div></div>
+    </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <span>© 2025 Abdirahman Mohamed</span>
-  <span>darwesh.tech · Nairobi, Kenya</span>
+  <div class="wrap">
+    <span>© 2026 Abdirahman Mohamed · ERPNext Consultant</span>
+    <span>Nairobi, Kenya · Working across East Africa and remotely</span>
+  </div>
 </footer>
 
-<script>
-(function () {
-  const output = document.getElementById('cli-output');
-  const input  = document.getElementById('cli-input');
-  const term   = document.getElementById('cli-terminal');
+<button id="toTop" aria-label="Back to top"><svg class="ic"><use href="#i-arrow"/></svg></button>
 
-  const PROMPT = '<span class="cli-prompt">abdirahman@darwesh</span><span class="cli-out"> ~$</span> ';
-
-  const commands = {
-    help: () => [
-      '<span class="cli-success">Available commands</span>',
-      '',
-      '  <span class="cli-key">whoami</span>        who is this guy',
-      '  <span class="cli-key">ls</span>            list directories',
-      '  <span class="cli-key">cd experience</span> full work history',
-      '  <span class="cli-key">cd stack</span>      technical skills',
-      '  <span class="cli-key">cd certs</span>      certifications',
-      '  <span class="cli-key">cd education</span>  academic background',
-      '  <span class="cli-key">cat contact</span>   contact details',
-      '  <span class="cli-key">clear</span>         clear terminal',
-      '',
-      '<span class="cli-comment"># tip: press Tab to autocomplete, ↑↓ for history</span>',
-      '',
-    ],
-
-    whoami: () => [
-      '<span class="cli-val">Abdirahman Mohamed</span>',
-      '<span class="cli-out">ERPNext Consultant · AWS Cloud · Nairobi, Kenya</span>',
-      '',
-      '<span class="cli-comment"># Currently: Azzir Group (Jan 2026 – present)</span>',
-      '<span class="cli-comment"># Background: financial ops, POS systems, B2B fuel sales</span>',
-      '<span class="cli-comment"># Stack: ERPNext · Frappe · AWS · Linux · MySQL</span>',
-      '<span class="cli-comment"># Building ERP that survives first contact with reality</span>',
-      '',
-    ],
-
-    ls: () => [
-      '<span class="cli-success">drwxr-xr-x</span>  <span class="cli-key">experience/</span>',
-      '<span class="cli-success">drwxr-xr-x</span>  <span class="cli-key">stack/</span>',
-      '<span class="cli-success">drwxr-xr-x</span>  <span class="cli-key">certs/</span>',
-      '<span class="cli-success">drwxr-xr-x</span>  <span class="cli-key">education/</span>',
-      '<span class="cli-success">-rw-r--r--</span>  <span class="cli-val">contact</span>',
-      '',
-    ],
-
-    'cd experience': () => [
-      '<span class="cli-out">~/experience</span>',
-      '',
-      '<span class="cli-key">Azzir Group</span>  <span class="cli-comment">Jan 2026 – Present · Nairobi</span>',
-      '  <span class="cli-val">ERPNext Consultant</span>',
-      '  <span class="cli-out">Implementation · config · AWS deploys · multi-industry</span>',
-      '',
-      '<span class="cli-key">Shell Fuels</span>  <span class="cli-comment">May 2024 – Dec 2025 · Bungoma</span>',
-      '  <span class="cli-val">Asst. Manager – Financial Operations</span>',
-      '  <span class="cli-out">Lipaspot POS · Shell Card · Visa/M-Pesa · 20+ accounts</span>',
-      '  <span class="cli-out">90% incidents resolved in &lt;15 min · onboarding 5→2 days</span>',
-      '',
-      '<span class="cli-key">Suza Logistics</span>  <span class="cli-comment">Mar 2023 – Apr 2024 · Eldoret</span>',
-      '  <span class="cli-val">B2B Sales &amp; Operations – bulk export fuels</span>',
-      '  <span class="cli-out">RECTS ERP · 20+ commercial clients · LPO processing</span>',
-      '',
-      '<span class="cli-key">Noor Cafe</span>  <span class="cli-comment">Sept 2021 – Feb 2023 · Bungoma</span>',
-      '  <span class="cli-val">Cashier Supervisor</span>',
-      '  <span class="cli-out">Hotel Master POS · 15 staff accounts · EOD reconciliation</span>',
-      '',
-    ],
-
-    'cd stack': () => [
-      '<span class="cli-out">~/stack</span>',
-      '',
-      '<span class="cli-key">ERP</span>',
-      '  <span class="cli-val">ERPNext · Frappe · Chart of accounts · Tax templates</span>',
-      '  <span class="cli-val">Roles &amp; permissions · Print formats · Financial modules</span>',
-      '  <span class="cli-val">RECTS ERP · Lipaspot POS · Hotel Master POS · Kenserve</span>',
-      '',
-      '<span class="cli-key">Cloud / AWS</span>',
-      '  <span class="cli-val">Lambda · API Gateway · S3 · DynamoDB · EC2 · VPC</span>',
-      '  <span class="cli-val">IAM · GuardDuty · CloudWatch · CloudTrail · SNS</span>',
-      '',
-      '<span class="cli-key">Systems &amp; Security</span>',
-      '  <span class="cli-val">Linux admin · Zorin OS · VMware · VirtualBox</span>',
-      '  <span class="cli-val">MySQL · Wireshark · Kali Linux · AnyDesk · TeamViewer</span>',
-      '',
-      '<span class="cli-key">Payments</span>',
-      '  <span class="cli-val">M-Pesa · Visa · Shell Card · Lipaspot</span>',
-      '',
-    ],
-
-    'cd certs': () => [
-      '<span class="cli-out">~/certs</span>',
-      '',
-      '<span class="cli-success">✓</span>  <span class="cli-val">AWS Certified Cloud Practitioner</span>',
-      '<span class="cli-success">✓</span>  <span class="cli-val">Certified APISec Practitioner</span>  <span class="cli-comment">· Cybershujaa</span>',
-      '<span class="cli-success">✓</span>  <span class="cli-val">KENET Advanced Cybersecurity Certificate</span>',
-      '<span class="cli-success">✓</span>  <span class="cli-val">ALX Africa AWS Academy Graduate</span>',
-      '<span class="cli-key">→</span>  <span class="cli-out">AWS Solutions Architect</span>  <span class="cli-comment">· active candidate</span>',
-      '',
-    ],
-
-    'cd education': () => [
-      '<span class="cli-out">~/education</span>',
-      '',
-      '<span class="cli-key">KCA University</span>  <span class="cli-comment">Ongoing · evening part-time · Nairobi</span>',
-      '  <span class="cli-val">BSc Applied Computing – Infosec &amp; Digital Forensics</span>',
-      '  <span class="cli-out">Networking · OS · cybersecurity · databases · web apps</span>',
-      '',
-      '<span class="cli-key">ALX Africa</span>  <span class="cli-comment">May 2024 – Jan 2025</span>',
-      '  <span class="cli-val">AWS Cloud Computing Bootcamp</span>',
-      '  <span class="cli-out">Serverless · VPC · IAM · DynamoDB · fault tolerance</span>',
-      '',
-      '<span class="cli-key">Cyber Shujaa</span>  <span class="cli-comment">Jan 2024 – May 2024</span>',
-      '  <span class="cli-val">Cloud &amp; Network Security Track</span>',
-      '  <span class="cli-out">Serianu / USIU Africa / Kenya Bankers Association</span>',
-      '  <span class="cli-out">Pen testing · Kali Linux · firewall config · Wireshark</span>',
-      '',
-    ],
-
-    'cat contact': () => [
-      '<span class="cli-out">contact:</span>',
-      '',
-      '  <span class="cli-key">email   </span> <span class="cli-val">darwesh.cm@gmail.com</span>',
-      '  <span class="cli-key">phone   </span> <span class="cli-val">+254 722 966 183</span>',
-      '  <span class="cli-key">linkedin</span> <span class="cli-val">linkedin.com/in/abdirahman404</span>',
-      '  <span class="cli-key">location</span> <span class="cli-val">Nairobi, Kenya</span>',
-      '',
-      '<span class="cli-comment"># open to remote engagements across East Africa and beyond</span>',
-      '',
-    ],
-  };
-
-  const allCmds = Object.keys(commands);
-  let history = [];
-  let histIdx  = -1;
-
-  function esc(str) {
-    return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  }
-
-  function appendLines(lines) {
-    lines.forEach(line => {
-      const d = document.createElement('div');
-      d.className = 'cli-line';
-      d.innerHTML = line === '' ? '&nbsp;' : line;
-      output.appendChild(d);
-    });
-    output.scrollTop = output.scrollHeight;
-  }
-
-  function appendCmd(raw) {
-    const d = document.createElement('div');
-    d.className = 'cli-line';
-    d.innerHTML = PROMPT + '<span class="cli-cmd">' + esc(raw) + '</span>';
-    output.appendChild(d);
-  }
-
-  function run(raw) {
-    const cmd = raw.trim().toLowerCase();
-    appendCmd(raw.trim());
-
-    if (cmd === 'clear') { output.innerHTML = ''; return; }
-    if (cmd === '')      { appendLines(['']); return; }
-
-    if (commands[cmd]) {
-      appendLines(commands[cmd]());
-    } else {
-      appendLines([
-        '<span class="cli-error">bash: ' + esc(raw.trim()) + ': command not found</span>',
-        '<span class="cli-out">Type <span class="cli-key">help</span> for available commands.</span>',
-        '',
-      ]);
-    }
-  }
-
-  // Boot
-  appendLines([
-    '<span class="cli-comment">## darwesh.tech v1.0.0 — ERPNext Consultant</span>',
-    '<span class="cli-comment">## Nairobi, Kenya · available for engagements</span>',
-    '',
-    '<span class="cli-out">Type <span class="cli-key">help</span> to see available commands.</span>',
-    '',
-  ]);
-
-  // Auto-run whoami after short delay
-  setTimeout(() => { run('whoami'); }, 700);
-
-  // Focus on click
-  term.addEventListener('click', () => input.focus());
-
-  input.addEventListener('keydown', function (e) {
-    if (e.key === 'Enter') {
-      const val = input.value;
-      if (val.trim()) { history.unshift(val); histIdx = -1; }
-      run(val);
-      input.value = '';
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      if (histIdx < history.length - 1) { histIdx++; input.value = history[histIdx]; }
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      if (histIdx > 0) { histIdx--; input.value = history[histIdx]; }
-      else { histIdx = -1; input.value = ''; }
-    } else if (e.key === 'Tab') {
-      e.preventDefault();
-      const val = input.value.trim().toLowerCase();
-      if (!val) return;
-      const match = allCmds.find(k => k.startsWith(val) && k !== val);
-      if (match) input.value = match;
-    }
-  });
-})();
-</script>
+<script src="app.js"></script>
 
 </body>
 </html>
