@@ -161,7 +161,7 @@
           <i class="chain-dot" aria-hidden="true"></i>
           <span class="chain-idx">01</span>
           <div class="chain-box">
-            <div class="chain-art"><img src="images/rome-01.jpg" width="1200" height="1788" alt="Roman survey tools, columns and standard — Requirements" loading="eager"></div>
+            <div class="chain-art"><img src="rome-01.jpg" width="1200" height="1788" alt="Roman survey tools, columns and standard — Requirements" loading="eager"></div>
             <div class="chain-body">
               <h3>Requirements</h3>
               <p>I learn the operation before touching the system, so nothing is built on assumptions.</p>
@@ -173,7 +173,7 @@
           <i class="chain-dot" aria-hidden="true"></i>
           <span class="chain-idx">02</span>
           <div class="chain-box">
-            <div class="chain-art"><img src="images/rome-02.jpg" width="1200" height="1788" alt="Temple model, compass and plans — Design" loading="lazy"></div>
+            <div class="chain-art"><img src="rome-02.jpg" width="1200" height="1788" alt="Temple model, compass and plans — Design" loading="lazy"></div>
             <div class="chain-body">
               <h3>Design</h3>
               <p>Workflows, permissions and accounts are designed and shown before they are built.</p>
@@ -185,7 +185,7 @@
           <i class="chain-dot" aria-hidden="true"></i>
           <span class="chain-idx">03</span>
           <div class="chain-box">
-            <div class="chain-art"><img src="images/rome-03.jpg" width="1200" height="1788" alt="Builders raising stone with crane — Build and test" loading="lazy"></div>
+            <div class="chain-art"><img src="rome-03.jpg" width="1200" height="1788" alt="Builders raising stone with crane — Build and test" loading="lazy"></div>
             <div class="chain-body">
               <h3>Build &amp; test</h3>
               <p>Configuration and data migration, checked against your real figures.</p>
@@ -197,7 +197,7 @@
           <i class="chain-dot" aria-hidden="true"></i>
           <span class="chain-idx">04</span>
           <div class="chain-box">
-            <div class="chain-art"><img src="images/rome-04.jpg" width="1200" height="1788" alt="Forum amphitheatre instruction — Training and go-live" loading="lazy"></div>
+            <div class="chain-art"><img src="rome-04.jpg" width="1200" height="1788" alt="Forum amphitheatre instruction — Training and go-live" loading="lazy"></div>
             <div class="chain-body">
               <h3>Training &amp; go-live</h3>
               <p>Each role is trained and assessed, and I lead the cutover so launch day is controlled.</p>
@@ -209,7 +209,7 @@
           <i class="chain-dot" aria-hidden="true"></i>
           <span class="chain-idx">05</span>
           <div class="chain-box">
-            <div class="chain-art"><img src="images/rome-05.jpg" width="1200" height="1788" alt="Roman road, milestone and laurel — Post go-live care" loading="lazy"></div>
+            <div class="chain-art"><img src="rome-05.jpg" width="1200" height="1788" alt="Roman road, milestone and laurel — Post go-live care" loading="lazy"></div>
             <div class="chain-body">
               <h3>Post go-live care</h3>
               <p>Real usage always surfaces refinements. I stay accountable for them.</p>
@@ -226,224 +226,37 @@
 <section id="work" class="alt">
   <div class="wrap">
     <div class="section-head" data-reveal>
-      <div class="eyebrow">Selected work</div>
-      <h2>Eight recent projects. Five worth a closer look.</h2>
-      <p>Each engagement had its own constraints: tax rules, currencies, existing systems. These five show the decisions that shaped them, with more projects below.</p>
+      <div class="eyebrow">Project atlas</div>
+      <h2>Eight businesses. Four countries. One implementation practice.</h2>
+      <p>Explore each engagement through an interactive atlas. Locations are approximate and shown at city/country level where available.</p>
     </div>
 
-    <!-- CASE 1 -->
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-bag"/></svg></div><div><div class="case-num">CASE 01</div><h3>Classic Cosmetics · Tradeflow POS</h3><div class="case-meta">Retail · POS · multi-store inventory</div></div></div>
-        <span class="status">Active engagement</span>
-      </div>
-      <div class="case-body">
-        <div class="case-col">
-          <div class="block"><div class="lab">Challenge</div><p>A multi-location cosmetics retailer needed a POS with real controls, stock they could trust across locations, and a purchasing flow that matched how goods actually arrive.</p></div>
-          <div class="block"><div class="lab">Scope I led</div><p>Specification of a custom cosmetics app with the development team, POS design and bug triage on ERPNext v16, purchase invoice workflow, stock and ledger reconciliation, print formats, WhatsApp notifications, cashier training.</p></div>
+    <div class="atlas-shell" id="projectAtlas" data-reveal>
+      <aside class="atlas-map-pane" aria-label="Project atlas map and selector">
+        <div class="atlas-map-card">
+          <div class="atlas-card-head">
+            <h3>Africa implementation atlas</h3>
+            <p>Approximate project locations only.</p>
+          </div>
+          <div class="atlas-map-wrap" id="atlasMapWrap">
+            <svg id="atlasMap" viewBox="0 0 780 730" aria-hidden="true">
+              <g id="atlasMapDots"></g>
+              <g id="atlasMapArcs"></g>
+            </svg>
+            <div id="atlasPins" class="atlas-pins" aria-hidden="false"></div>
+          </div>
+          <div class="atlas-map-caption">Map and routes are illustrative and approximate.</div>
         </div>
-        <div class="case-col">
-          <div class="lab">Decisions that mattered</div>
-          <ul class="decisions">
-            <li><b>Workflow instead of Purchase Receipt</b> for invoice confirmation, modelled in Desk-style mockups before any build.</li>
-            <li><b>Locked-down roles.</b> Separate cashier and salesperson architecture, with shift lifecycle and permissions enforced through the Role Permission Manager.</li>
-            <li><b>Verified, not assumed.</b> Stock and ledgers reconciled across three locations with fuzzy matching; a permissions fault traced to owner and warehouse mismatches.</li>
-            <li><b>Counts that stick.</b> A 7-day rolling count of 1,947 items split across 7 counters, tracked item by item.</li>
-          </ul>
-          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>A POS with defined roles and shift controls, stock verified across locations, and cashiers assessed against a competency matrix.</p></div></div>
-          <!-- TODO: add a measurable result here (e.g. discrepancy rate found/fixed, days to stable POS, cashiers certified) -->
-        </div>
-      </div>
-      <div class="case-flow">
-        <div>
-          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-file"/></svg>Purchase Invoice</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node ac"><svg class="ic"><use href="#i-check"/></svg>Confirmation workflow</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-box"/></svg>Stock updated</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-shield"/></svg>Verified ledger</span></div>
-          <div class="flow-cap">Simplified view of the purchasing flow design.</div>
-          <!-- TODO: replace with a sanitized workflow mockup or print-format preview image -->
-        </div>
-        <div class="mini" aria-hidden="true">
-          <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-file"/></svg>Purchase Invoice</div><span class="pill" data-cycle="Draft,Confirmed,Submitted" data-state="0">Draft</span></div>
-          <div class="sk w80"></div><div class="sk w60"></div>
-          <div class="dot3"><i class="on"></i><i></i><i></i></div>
-        </div>
-      </div>
-      <div class="case-foot"><span class="tag">POS</span><span class="tag">Workflows</span><span class="tag">Roles &amp; permissions</span><span class="tag">Stock reconciliation</span><span class="tag">Training</span></div>
-    </article>
 
-    <!-- CASE 2 -->
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-box"/></svg></div><div><div class="case-num">CASE 02</div><h3>REEVON</h3><div class="case-meta">Athletic apparel · E-commerce · Shopify + ERPNext</div></div></div>
-        <span class="status done">Handed over</span>
-      </div>
-      <div class="case-body">
-        <div class="case-col">
-          <div class="block"><div class="lab">Challenge</div><p>A new apparel brand selling on Shopify needed orders, invoicing and dispatch connected in one system, with local payments and correct tax from day one.</p></div>
-          <div class="block"><div class="lab">Scope I led</div><p>Shopify integration, payment gateway selection, tax templates, branded documents, dispatch notifications, email configuration and handover.</p></div>
+        <div class="atlas-selector" aria-label="Project selector fallback">
+          <h3>Choose a business</h3>
+          <p>Select from the list if you prefer not to use the map pins.</p>
+          <div id="atlasSelector" class="atlas-selector-list" role="tablist" aria-orientation="vertical"></div>
         </div>
-        <div class="case-col">
-          <div class="lab">Decisions that mattered</div>
-          <ul class="decisions">
-            <li><b>Gateway chosen on evidence.</b> Compared four providers on readiness and KYC timing; IntaSend went live while others stayed in reserve.</li>
-            <li><b>Order chain mapped end to end</b> from Sales Order to Sales Invoice to Delivery Note.</li>
-            <li><b>Customers told automatically.</b> A Server Script sends the dispatch notification when a Delivery Note is submitted.</li>
-            <li><b>Documents that print reliably.</b> Branded formats built with PDF-safe layouts, and a letterhead fix for a domain mismatch.</li>
-          </ul>
-          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>Orders flow from Shopify through to dispatch notification, with Kenya VAT and import duty templates in place. The project reached handover.</p></div></div>
-          <!-- TODO: add a measurable result (e.g. orders processed, manual steps removed) -->
-        </div>
-      </div>
-      <div class="case-flow">
-        <div>
-          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-bag"/></svg>Shopify order</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-file"/></svg>Sales Order</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-file"/></svg>Sales Invoice</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-truck"/></svg>Delivery Note</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-bell"/></svg>Dispatch notification</span></div>
-          <div class="flow-cap">The order-to-dispatch chain, automated.</div>
-        </div>
-        <div class="mini notif" aria-hidden="true" style="display:flex;gap:12px;align-items:center">
-          <div class="notif-ic"><svg class="ic"><use href="#i-truck"/></svg></div>
-          <div><b>Your order is on its way</b><span>Sent on Delivery Note submit · illustrative</span></div>
-        </div>
-      </div>
-      <div class="case-foot"><span class="tag">Shopify</span><span class="tag">Integrations</span><span class="tag">Server Scripts</span><span class="tag">Payments</span><span class="tag">Tax</span></div>
-    </article>
+      </aside>
 
-    <!-- CASE 3 -->
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-leaf"/></svg></div><div><div class="case-num">CASE 03</div><h3>Greentech Landscaping</h3><div class="case-meta">Landscaping · Services · Mauritius · MUR</div></div></div>
-        <span class="status">Active engagement</span>
-      </div>
-      <div class="case-body">
-        <div class="case-col">
-          <div class="block"><div class="lab">Challenge</div><p>A landscaping company running on QuickBooks needed installation projects and recurring maintenance visits managed in one system.</p></div>
-          <div class="block"><div class="lab">Scope I led</div><p>Requirements document, gap analysis of the custom app build, accounting migration from QuickBooks, module fit assessment and branded documents.</p></div>
-        </div>
-        <div class="case-col">
-          <div class="lab">Decisions that mattered</div>
-          <ul class="decisions">
-            <li><b>Use the standard where it fits.</b> ERPNext Projects recommended for installation jobs.</li>
-            <li><b>Build only where it doesn't.</b> A custom recurring-visit build for maintenance, rather than bending a module out of shape.</li>
-            <li><b>Clean migration.</b> The chart of accounts was brought across from a QuickBooks export, 283 rows in MUR.</li>
-            <li><b>Safe styling.</b> Six print formats with namespaced CSS so they never clash with Frappe's own styles.</li>
-          </ul>
-          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>Requirements and gap analysis completed, accounts migrated, six branded documents delivered, and a clear boundary between standard and custom.</p></div></div>
-          <!-- TODO: add current build/go-live status or a measurable result -->
-        </div>
-      </div>
-      <div class="case-flow">
-        <div>
-          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-folder"/></svg>Installation jobs</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-check"/></svg>ERPNext Projects</span></div>
-          <div class="flow flowseq" style="margin-top:10px"><span class="node"><svg class="ic"><use href="#i-leaf"/></svg>Maintenance visits</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node ac"><svg class="ic"><use href="#i-code"/></svg>Custom recurring build</span></div>
-          <div class="flow-cap">Standard where it fits, custom where it doesn't.</div>
-        </div>
-        <div class="mini" aria-hidden="true">
-          <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-leaf"/></svg>Recurring visits</div></div>
-          <div class="week"><span class="on">M</span><span>T</span><span>W</span><span class="on">T</span><span>F</span><span>S</span><span>S</span></div>
-          <div class="lane">Illustrative schedule</div>
-        </div>
-      </div>
-      <div class="case-foot"><span class="tag">FRD</span><span class="tag">Gap analysis</span><span class="tag">Data migration</span><span class="tag">Projects module</span><span class="tag">Print formats</span></div>
-    </article>
-
-    <!-- CASE 4 -->
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-bed"/></svg></div><div><div class="case-num">CASE 04</div><h3>Ilala Crest Lodge</h3><div class="case-meta">Hospitality · Malawi · MWK</div></div></div>
-        <span class="status">Active engagement</span>
-      </div>
-      <div class="case-body">
-        <div class="case-col">
-          <div class="block"><div class="lab">Challenge</div><p>A lodge needed an accounting foundation that mirrored its real books, so opening balances would land correctly on day one.</p></div>
-          <div class="block"><div class="lab">Scope I led</div><p>Chart of accounts design, import preparation, discovery questionnaire and document branding.</p></div>
-        </div>
-        <div class="case-col">
-          <div class="lab">Decisions that mattered</div>
-          <ul class="decisions">
-            <li><b>Start from the real trial balance,</b> not a generic template: 118 accounts that balance to the client's own figures.</li>
-            <li><b>Import-ready from the start.</b> Reformatted to the ERPNext v16 importer specification and merged with 45 additional accounts.</li>
-            <li><b>Questions before configuration.</b> A discovery questionnaire captured operations before design began.</li>
-          </ul>
-          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>A balanced, import-ready chart of accounts built from the client's actual books, plus branded delivery documents.</p></div></div>
-          <!-- TODO: add current status (e.g. go-live date, modules live) -->
-        </div>
-      </div>
-      <div class="case-flow">
-        <div>
-          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-file"/></svg>Client trial balance</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-db"/></svg>118 accounts</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node ac"><svg class="ic"><use href="#i-folder"/></svg>+45 added</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-check"/></svg>v16 importer ready</span></div>
-          <div class="flow-cap">How the opening ledger was built.</div>
-        </div>
-        <div class="mini" aria-hidden="true">
-          <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-db"/></svg>Chart of accounts</div></div>
-          <div class="tree"><div><svg class="ic"><use href="#i-folder"/></svg>Assets</div><div class="sub">Current assets</div><div><svg class="ic"><use href="#i-folder"/></svg>Liabilities</div><div><svg class="ic"><use href="#i-folder"/></svg>Income</div><div><svg class="ic"><use href="#i-folder"/></svg>Expenses</div></div>
-          <div class="stamp"><svg class="ic"><use href="#i-check"/></svg>Balanced to trial balance</div>
-        </div>
-      </div>
-      <div class="case-foot"><span class="tag">Chart of accounts</span><span class="tag">Trial balance</span><span class="tag">Discovery</span><span class="tag">Hospitality</span></div>
-    </article>
-
-    <!-- CASE 5 -->
-    <article class="case" style="margin-bottom:0" data-reveal>
-      <div class="case-head">
-        <div class="case-id"><div class="case-ico"><svg class="ic"><use href="#i-ball"/></svg></div><div><div class="case-num">CASE 05</div><h3>Planet Active</h3><div class="case-meta">Equipment leasing &amp; manufacturing · Tanzania · TZS</div></div></div>
-        <span class="status">Active engagement</span>
-      </div>
-      <div class="case-body">
-        <div class="case-col">
-          <div class="block"><div class="lab">Challenge</div><p>A pool table leasing business needed to track what goes into each table and where every table is, by serial number.</p></div>
-          <div class="block"><div class="lab">Scope I led</div><p>Requirements review, BOM and serial tracking design, compliance review and item master clean-up.</p></div>
-        </div>
-        <div class="case-col">
-          <div class="lab">Decisions that mattered</div>
-          <ul class="decisions">
-            <li><b>Compliance raised early.</b> A Tanzania VAT and EFD gap was flagged before build, when it is cheap to address.</li>
-            <li><b>Design around serial numbers,</b> linking bills of materials to individual tables.</li>
-            <li><b>Item master fixed first.</b> A 127-item raw materials price list in TZS was audited and its code scheme conflicts resolved.</li>
-          </ul>
-          <div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>Validated requirements, a compliance risk surfaced up front, and a clean item foundation to build on.</p></div></div>
-          <!-- TODO: add current status or measurable result -->
-        </div>
-      </div>
-      <div class="case-flow">
-        <div>
-          <div class="flow flowseq"><span class="node"><svg class="ic"><use href="#i-box"/></svg>Raw materials</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-layout"/></svg>BOM</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node"><svg class="ic"><use href="#i-ball"/></svg>Serial-numbered table</span><span class="arr"><svg class="ic"><use href="#i-arrow"/></svg></span><span class="node hl"><svg class="ic"><use href="#i-check"/></svg>Lease tracking</span></div>
-          <div class="flow-cap">From components to a tracked, leased asset.</div>
-        </div>
-        <div class="mini" aria-hidden="true">
-          <div class="ui-head"><div class="ui-title"><svg class="ic"><use href="#i-layout"/></svg>Bill of materials</div></div>
-          <div class="tree"><div><svg class="ic"><use href="#i-ball"/></svg>Pool table · serial tracked</div><div class="sub">Frame</div><div class="sub">Cloth</div><div class="sub">Cushions</div><div class="sub">Pockets</div></div>
-          <div class="lane">Illustrative</div>
-        </div>
-      </div>
-      <div class="case-foot"><span class="tag">Manufacturing</span><span class="tag">BOM</span><span class="tag">Serial tracking</span><span class="tag">Tax compliance</span></div>
-    </article>
-
-    <div class="more-head" data-reveal>More recent projects</div>
-    <div class="more-grid">
-      <div class="more" data-reveal>
-        <div class="more-top"><div class="case-ico"><svg class="ic"><use href="#i-truck"/></svg></div><span class="tag">Distribution</span></div>
-        <h3>GBI</h3>
-        <div class="case-meta">Wholesale apparel distribution · Nairobi, Kenya</div>
-        <p>A large wholesale clothing distributor in Nairobi, moving high-volume stock and trade customers onto ERPNext.</p>
-        <!-- TODO: add what you delivered for GBI (modules, scale, a key decision) -->
-        <span class="tag">ERPNext implementation</span>
-      </div>
-      <div class="more" data-reveal style="--d:.1s">
-        <div class="more-top"><div class="case-ico"><svg class="ic"><use href="#i-leaf"/></svg></div><span class="tag">Agribusiness</span></div>
-        <h3>Mackinnon Feedlot</h3>
-        <div class="case-meta">Livestock · cattle sourced from Kitui, Kenya</div>
-        <p>A major cattle importer and feedlot operation, sourcing from Kitui and managing livestock as inventory.</p>
-        <!-- TODO: add what you delivered for Mackinnon (livestock stock tracking, costing, etc.) -->
-        <span class="tag">ERPNext implementation</span>
-      </div>
-      <div class="more" data-reveal style="--d:.2s">
-        <div class="more-top"><div class="case-ico"><svg class="ic"><use href="#i-sliders"/></svg></div><span class="tag">ERPNext</span></div>
-        <h3>Fahaab</h3>
-        <div class="case-meta">ERPNext implementation</div>
-        <p>Implementation engagement delivered alongside the projects above.</p>
-        <!-- TODO: add Fahaab's sector, location and what you delivered, then pin it on the map -->
-        <span class="tag">ERPNext implementation</span>
-      </div>
+      <article id="atlasDetail" class="atlas-detail" aria-live="polite" aria-atomic="true"></article>
     </div>
-
-    <!-- TODO: testimonial block goes here once you have a client quote -->
   </div>
 </section>
 
@@ -452,28 +265,15 @@
   <div class="wrap">
     <div class="section-head" data-reveal>
       <div class="eyebrow">Across Africa</div>
-      <h2>Four countries, four currencies, one way of working.</h2>
-      <p>Tax rules, currencies and operating realities change from market to market. I've configured ERPNext for each of them. Hover the map or pick a country.</p>
+      <h2>Regional delivery snapshot.</h2>
+      <p>The atlas above is the primary exploration view. These locations remain approximate, and Fahaab stays location pending.</p>
     </div>
-    <div class="africa-grid">
-      <div class="map-card" data-reveal>
-        <div class="map-wrap" id="mapWrap">
-          <svg id="mapSvg" viewBox="0 0 780 730" aria-hidden="true"><g id="mapDots"></g><g id="mapArcs"></g></svg>
-          <button class="pin hub" data-loc="kenya" aria-label="Kenya"><i></i><span>Nairobi · base</span></button>
-          <button class="pin" data-loc="tanzania" aria-label="Tanzania"><i></i><span>Tanzania</span></button>
-          <button class="pin" data-loc="malawi" aria-label="Malawi"><i></i><span>Malawi</span></button>
-          <button class="pin left" data-loc="mauritius" aria-label="Mauritius"><i></i><span>Mauritius</span></button>
-        </div>
-        <div class="map-cap">Dotted map, approximate positions.</div>
-      </div>
-      <div class="loc-list" data-reveal style="--d:.15s">
-        <button class="loc" data-loc="kenya"><span class="loc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><span><b>Kenya · Nairobi &amp; Kitui</b><small>GBI, Mackinnon Feedlot, REEVON</small></span><span class="cur">KES</span></button>
-        <button class="loc" data-loc="tanzania"><span class="loc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><span><b>Tanzania</b><small>Planet Active · VAT and EFD compliance</small></span><span class="cur">TZS</span></button>
-        <button class="loc" data-loc="malawi"><span class="loc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><span><b>Malawi</b><small>Ilala Crest Lodge · hospitality accounts</small></span><span class="cur">MWK</span></button>
-        <button class="loc" data-loc="mauritius"><span class="loc-ico"><svg class="ic"><use href="#i-pin"/></svg></span><span><b>Mauritius</b><small>Greentech Landscaping · QuickBooks migration</small></span><span class="cur">MUR</span></button>
-        <!-- TODO: once you confirm Classic Cosmetics and Fahaab locations, add them to the right country here -->
-        <div class="loc-note">Also delivered: Classic Cosmetics, Fahaab.</div>
-      </div>
+    <div class="atlas-country-grid" data-reveal>
+      <article class="atlas-country-card"><h3>Kenya</h3><p>Nairobi, Kitui, Bungoma (approx.)</p><ul><li>REEVON</li><li>GBI</li><li>Mackinnon Feedlot</li><li>Classic Cosmetics</li></ul></article>
+      <article class="atlas-country-card"><h3>Tanzania</h3><p>Planet Active</p><ul><li>Tanzania VAT and EFD compliance context</li></ul></article>
+      <article class="atlas-country-card"><h3>Mauritius</h3><p>Greentech Landscaping</p><ul><li>QuickBooks migration and service workflows</li></ul></article>
+      <article class="atlas-country-card"><h3>Malawi</h3><p>Ilala Crest Lodge</p><ul><li>Hospitality chart-of-accounts foundation</li></ul></article>
+      <article class="atlas-country-card"><h3>Location pending</h3><p>Fahaab</p><ul><li>ERPNext implementation engagement delivered alongside the above projects</li></ul></article>
     </div>
   </div>
 </section>
