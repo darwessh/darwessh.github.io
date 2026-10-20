@@ -527,23 +527,28 @@
 
     function renderDetail() {
       const project = byId[activeId];
+      const process = Array.isArray(project.process) ? project.process : [];
+      const tagsList = Array.isArray(project.tags) ? project.tags : [];
+      const decisionsList = Array.isArray(project.decisions) ? project.decisions : [];
+      const decisionPanels = Array.isArray(project.decisionPanels) ? project.decisionPanels : [];
+      const infraNodes = Array.isArray(project.infra) ? project.infra : [];
       detail.setAttribute('data-project', project.id);
-      const flow = project.process.map((step, i) => '<li class="atlas-flow-step" data-step="' + i + '"><span class="atlas-step-index">' + (i + 1) + '</span><span>' + escape(step) + '</span></li>').join('');
+      const flow = process.map((step, i) => '<li class="atlas-flow-step" data-step="' + i + '"><span class="atlas-step-index">' + (i + 1) + '</span><span>' + escape(step) + '</span></li>').join('');
       const tabs = tabDefs.map(t => '<button type="button" class="atlas-tab' + (t.key === activeTab ? ' active' : '') + '" data-tab="' + t.key + '" role="tab" aria-selected="' + String(t.key === activeTab) + '">' + t.label + '</button>').join('');
-      const tags = project.tags.map(tag => '<span class="tag">' + escape(tag) + '</span>').join('');
-      const decisions = project.decisions.map((d, i) => '<details class="atlas-decision"' + (i === 0 ? ' open' : '') + '><summary>' + escape(d.title) + '</summary><p>' + escape(d.detail) + '</p></details>').join('');
-      const reevonPanels = project.decisionPanels ? '<div class="atlas-context-panels">' + project.decisionPanels.map(panel => '<details class="atlas-panel" open><summary>' + escape(panel.title) + '</summary><p>' + escape(panel.text) + '</p></details>').join('') + '</div>' : '';
-      const infra = project.infra ? '<div class="atlas-infra"><div class="lab">Illustrative system infrastructure</div><div class="atlas-infra-grid">' + project.infra.map(item => '<div class="atlas-infra-node">' + escape(item) + '</div>').join('') + '</div><p class="atlas-illustrative-note">Conceptual interface composition — not a production screenshot.</p></div>' : '';
+      const tags = tagsList.map(tag => '<span class="tag">' + escape(tag) + '</span>').join('');
+      const decisions = decisionsList.map((d, i) => '<details class="atlas-decision"' + (i === 0 ? ' open' : '') + '><summary>' + escape(d.title) + '</summary><p>' + escape(d.detail) + '</p></details>').join('');
+      const decisionPanelsHtml = decisionPanels.length ? '<div class="atlas-context-panels">' + decisionPanels.map(panel => '<details class="atlas-panel" open><summary>' + escape(panel.title) + '</summary><p>' + escape(panel.text) + '</p></details>').join('') + '</div>' : '';
+      const infra = infraNodes.length ? '<div class="atlas-infra"><div class="lab">Illustrative system infrastructure</div><div class="atlas-infra-grid">' + infraNodes.map(item => '<div class="atlas-infra-node">' + escape(item) + '</div>').join('') + '</div><p class="atlas-illustrative-note">Conceptual interface composition — not a production screenshot.</p></div>' : '';
 
       let panel = '';
       if (activeTab === 'overview') {
         panel = '<div class="atlas-panel-body"><p class="atlas-summary">' + escape(project.summary) + '</p><div class="block"><div class="lab">Challenge</div><p>' + escape(project.challenge) + '</p></div><div class="atlas-tags">' + tags + '</div></div>';
       }
       if (activeTab === 'process') {
-        panel = '<div class="atlas-panel-body"><div class="lab">Illustrative workflow</div><ol class="atlas-flow" aria-label="' + escape(project.name) + ' process flow">' + flow + '</ol>' + reevonPanels + infra + '<p class="flow-cap">Workflow is conceptual and simplified for communication.</p></div>';
+        panel = '<div class="atlas-panel-body"><div class="lab">Illustrative workflow</div><ol class="atlas-flow" aria-label="' + escape(project.name) + ' process flow">' + flow + '</ol>' + decisionPanelsHtml + infra + '<p class="flow-cap">Workflow is conceptual and simplified for communication.</p></div>';
       }
       if (activeTab === 'decisions') {
-        panel = '<div class="atlas-panel-body"><div class="lab">Decisions that mattered</div>' + decisions + reevonPanels + '</div>';
+        panel = '<div class="atlas-panel-body"><div class="lab">Decisions that mattered</div>' + decisions + decisionPanelsHtml + '</div>';
       }
       if (activeTab === 'outcome') {
         panel = '<div class="atlas-panel-body"><div class="outcome"><svg class="ic"><use href="#i-shield"/></svg><div><div class="lab">Outcome</div><p>' + escape(project.outcome) + '</p></div></div><p class="atlas-location-note">Location: ' + escape(project.locationLabel) + ' · Status: ' + escape(project.status) + '.</p></div>';

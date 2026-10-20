@@ -247,6 +247,30 @@ button:focus-visible, a:focus-visible {
 .atlas-country-card p { margin: 0; color: var(--muted); font-size: .9rem; }
 .atlas-country-card ul { margin: .55rem 0 0; padding-left: 1rem; color: #dbe8ff; }
 
+.chain-art-fallback {
+  aspect-ratio: 1200 / 1788;
+  border-radius: 14px;
+  border: 1px solid rgba(215, 131, 68, .35);
+  background:
+    linear-gradient(160deg, rgba(215, 131, 68, .22), rgba(13, 22, 40, .65)),
+    radial-gradient(circle at 25% 20%, rgba(240, 166, 111, .24), transparent 55%),
+    #0b1424;
+  display: grid;
+  align-content: end;
+  gap: .35rem;
+  padding: .95rem;
+}
+.chain-art-stage {
+  font-size: .72rem;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--accent-soft);
+}
+.chain-art-title {
+  font-size: .95rem;
+  color: #f6f9ff;
+}
+
 @media (max-width: 1000px) {
   .atlas-shell { grid-template-columns: 1fr; }
   .atlas-map-pane { position: static; }
